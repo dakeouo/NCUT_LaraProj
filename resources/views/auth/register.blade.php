@@ -9,7 +9,7 @@
     <fieldset>
         <div class="pure-control-group">
             <label for="id">學號(帳號)</label>
-            <input id="id" type="text" placeholder="Student ID" name="id" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" value="{{ old('id') }}" required autofocus>
+            <input id="id" type="text" placeholder="Student ID" name="id" class="form-control{{ $errors->has('uid') ? ' is-invalid' : '' }}" value="{{ old('uid') }}" required autofocus>
             @if ($errors->has('id'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('id') }}</strong>
