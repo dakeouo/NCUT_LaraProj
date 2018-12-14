@@ -4,7 +4,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') | {{ config('app.name', '學生作業管理系統') }}</title>
+    <title>@yield('title') | 學生作業管理系統</title>
     @include('layouts.partials.header')
 </head>
 <body>
