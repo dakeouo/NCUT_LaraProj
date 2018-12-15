@@ -14,9 +14,8 @@ class CreateHomeworksTable extends Migration
     public function up()
     {
         Schema::create('homeworks', function (Blueprint $table) {
-            $table->increments('id');
             $table->string('type',15);
-            $table->string('no',10);
+            $table->smallInteger('id')->primary();
             $table->mediumText('contect');
             $table->smallInteger('weight');
             $table->dateTime('start_at');
