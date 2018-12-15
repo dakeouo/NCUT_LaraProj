@@ -174,9 +174,9 @@ button{
     background: #bb5e00;
 }
 
-.img_60{
-    width: 60px;
-    height: 60px;
+.img_50{
+    width: 40px;
+    height: 40px;
 }
 .img_100{
     width: 100px;
@@ -188,7 +188,7 @@ button{
 }
 
 .table_img{
-    display: block;
+    display: inline-block;
     position:relative;
     overflow:hidden;
     border-radius:50%;
