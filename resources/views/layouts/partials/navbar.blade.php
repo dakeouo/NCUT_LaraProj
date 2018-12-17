@@ -29,7 +29,7 @@
                 </ul>
             </li>
             @endif
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">個人資訊</a></li>
+            <li class="pure-menu-item"><a href="{{ url('/profile') }}" class="pure-menu-link">個人資訊</a></li>
             <li class="pure-menu-item"><a href="{{ route('logout') }}" class="pure-menu-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">登出</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf</form>
             </li>

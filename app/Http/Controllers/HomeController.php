@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,9 +25,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->type == "正式生")  return view('std.home');
-        else return view('ta.home');
-        
+        if(Auth::user()->type == "正式生"){
+            return view('std.home');
+        }else{
+            $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();
+
+            for ($i=0;$i<7;$i++) { 
+                $HW[$i] = DB::table('scores')->where('hwId',$i+1)->select(
+                    'userId as UID', 
+                    'hwScore as Score'
+                )->pluck('Score', 'UID');
+            }
+
+            $avg = DB::table('scores')->select(
+                'userId as UID', 
+                DB::raw('round(avg(hwScore),1) as AVG')
+            )->groupBy('userId')->pluck('AVG', 'UID');
+
+            return view('ta.home',[
+                'users' => $users,
+                'scores' => $HW,
+                'avg' => $avg
+            ]);
+        }
         //return view('home');
+    }
+
+    public function profile(){
+        return view('profile');
     }
 }
