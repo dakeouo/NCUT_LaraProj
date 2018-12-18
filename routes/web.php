@@ -19,4 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'HomeController@profile');
+Route::get('/profile', [
+    'middleware' => 'auth',
+    'uses' => 'HomeController@profile'
+]);
+
+Route::get('/choice', [
+    'middleware' => 'auth',
+    'uses' => 'ChoiceController@index'
+]);
+
+Route::get('/homework', [
+    'middleware' => 'auth',
+    'uses' => 'HomeworkController@index'
+]);

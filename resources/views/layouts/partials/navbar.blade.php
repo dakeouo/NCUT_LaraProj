@@ -22,10 +22,10 @@
             <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                 <a href="{{ route('home') }}" class="pure-menu-link">作業管理</a>
                 <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">學生頁面</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">作業維護&批改</a></li>
+                    <!-- <li class="pure-menu-item"><a href="#" class="pure-menu-link">學生頁面</a></li> -->
+                    <li class="pure-menu-item"><a href="{{ url('/homework') }}" class="pure-menu-link">作業維護&批改</a></li>
                     <!-- <li class="pure-menu-item"><a href="stdPhoto.php" class="pure-menu-link">系統成員管理</a></li> -->
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">選擇題管理</a></li>
+                    <li class="pure-menu-item"><a href="{{ url('/choice') }}" class="pure-menu-link">選擇題管理</a></li>
                 </ul>
             </li>
             @endif
