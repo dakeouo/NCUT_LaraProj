@@ -26,7 +26,23 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->type == "正式生"){
-            return view('std.home');
+			$homeworks = DB::table('homeworks')->where('type','0')
+        	->select(
+    			'id', 
+    			'weight',
+    			'start_at',
+    			'finish_at'
+    		)->get();
+        	$HWname=["無","作業一","作業二","作業三","作業四","作業五","作業六","期末作業"];
+            $score = DB::table('scores')->where('userId','Auth::user()->uid')->select(
+                    'hwScore'
+                )->get();
+  
+            return view('std.home',[
+			    'homeworks' => $homeworks,
+                'HWname' => $HWname,
+				'scores' => $score,
+			]);
         }else{
             $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();
 
@@ -36,7 +52,6 @@ class HomeController extends Controller
                     'hwScore as Score'
                 )->pluck('Score', 'UID');
             }
-
             $avg = DB::table('scores')->select(
                 'userId as UID', 
                 DB::raw('round(avg(hwScore),1) as AVG')

@@ -36,38 +36,20 @@
 		<th width="8%">作業分數</th>
 		<th width="">評語</th>
 	</tbody>
+@if (count($homeworks) > 0)
+	@foreach($homeworks as $hw)	
 	<tr>
-		<td>作業一</td>
-		<td>100%</td>
-		<td>從2018-05-04 00:00:00<br />至2019-08-07 23:59:00</td>
+		<td>{{ $HWname[$hw->id] }}</td>
+		<td>{{ $hw->weight }}%</td>
+		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="#" class="std-button-primary">說明</a></td>
 		<td><a href="#" class="std-button-warning">作答</a></td>
 		<td><a href="#" class="std-button-upload">上傳</a></td>
 		<td>尚未繳交</td>
-		<td>0</td>
+		<td>{{ $scores}}</td>
 		<td><div class="std-button-disabled">觀看</div></td>
 	</tr>
-	<tr>
-		<td>作業二</td>
-		<td>100%</td>
-		<td>從2018-05-04 00:00:00<br />至2019-08-07 23:59:00</td>
-		<td><a href="#" class="std-button-primary">說明</a></td>
-		<td><font size="6">8</font> / 10</td>
-		<td>已上傳</td>
-		<td>2018-05-04 13:14:52</td>
-		<td>87</td>
-		<td><a href="#" class="std-button-primary">觀看</a></td>
-	</tr>
-	<tr>
-		<td>作業三</td>
-		<td>100%</td>
-		<td>從2017-05-04 00:00:00<br />至2017-08-07 23:59:00</td>
-		<td><a href="#" class="std-button-primary">說明</a></td>
-		<td><div class="std-button-disabled">作答</div></td>
-		<td><div class="std-button-disabled">上傳</div></td>
-		<td>尚未繳交</td>
-		<td>0</td>
-		<td><a href="#" class="std-button-primary">觀看</a></td>
-	</tr>
+	@endforeach
+@endif
 </table>
 @endsection
