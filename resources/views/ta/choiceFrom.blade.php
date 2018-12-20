@@ -16,7 +16,9 @@
 <div>
 	<form class="pure-form pure-form-aligned" method="POST" action="{{ $action }}">
 	{{ csrf_field() }}
+	@if($FormType == "Edit")
 	{{ method_field('PATCH') }}
+	@endif
    	<fieldset>
    		<div class="pure-control-group">
             <label style="text-align: left;">章節</label>

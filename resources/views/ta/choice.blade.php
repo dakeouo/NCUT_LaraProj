@@ -25,9 +25,14 @@
 @if (count($choices) > 0)
 	@foreach($choices as $ch)
 	<tr>
-		<td>
-			<a href="choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>&nbsp;
-			<a href="#" class="std-button-error">刪除</a>
+		<td style="display: inline-block;">
+		<form action="choice/delete/{{ $ch->id }}" method="POST">
+		<a href="choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>
+		&nbsp;
+		{{ csrf_field() }}
+        {{ method_field('DELETE') }}
+		<input type="submit" value="刪除" class="std-button-error">
+		</form>
 		</td>
 		<td>第{{ $chName[$ch->chapter] }}章</td>
 		<td>第{{ $chName[$ch->topic] }}大題</td>

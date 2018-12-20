@@ -103,4 +103,10 @@ class ChoiceController extends Controller
 
         return redirect('/choice');
     }
+
+    public function destroy(Request $request, $id){
+        DB::table('choices')->where('id', $id)->delete();
+
+        return redirect('/choice');
+    }
 }
