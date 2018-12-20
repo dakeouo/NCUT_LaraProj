@@ -32,7 +32,8 @@ class ChoiceController extends Controller
     		return url('/home');
     	}else{
     		$choices = DB::table('choices')->select(
-    			'chapter', 
+    			'id',
+                'chapter', 
     			'topic',
     			'ans',
     			'question'
@@ -60,6 +61,38 @@ class ChoiceController extends Controller
     public function store(Request $request){
 
         DB::table('choices')->insert([
+            'chapter' => $request->chap, 
+            'topic' => $request->grop,
+            'question' => $request->question,
+            'option1' => $request->optionA,'option2' => $request->optionB,
+            'option3' => $request->optionC,'option4' => $request->optionD,
+            'ans' => $request->ans,
+        ]);
+
+        return redirect('/choice');
+    }
+
+    public function edit($id){
+
+        $choices = DB::table('choices')->select(
+            'chapter as chap', 'topic as grop','ans','question',
+            'option1','option2','option3','option4'
+        )->where('id',$id)->first();
+
+        return view('ta.choiceFrom',[
+            'title' => '修改選擇題',
+            'FormType' => 'Edit',
+            'action' => $id,
+            //'action' => '/home',
+            'chName' => $this->chName,
+            'chAns' => $this->chAns,
+            'choices' => $choices,
+        ]);
+    }
+
+    public function update(Request $request, $id){
+
+        DB::table('choices')->where('id', $id)->update([
             'chapter' => $request->chap, 
             'topic' => $request->grop,
             'question' => $request->question,

@@ -26,7 +26,7 @@
 	@foreach($choices as $ch)
 	<tr>
 		<td>
-			<a href="#" class="std-button-warning">修改</a>&nbsp;
+			<a href="choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>&nbsp;
 			<a href="#" class="std-button-error">刪除</a>
 		</td>
 		<td>第{{ $chName[$ch->chapter] }}章</td>
