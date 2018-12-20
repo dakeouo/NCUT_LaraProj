@@ -44,7 +44,11 @@
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="#" class="std-button-primary">說明</a></td>
 		<td><a href="#" class="std-button-warning">作答</a></td>
+		@if($hw->id < count($submits)+1)
+		<td>已上傳</td>
+	    @else
 		<td><a href="#" class="std-button-upload">上傳</a></td>
+	    @endif
 		<td>尚未繳交</td>
 		@if($hw->id < count($scores)+1)
 		<td>{{ $scores[$hw->id] }}</td>

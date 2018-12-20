@@ -38,11 +38,19 @@ class HomeController extends Controller
                     'hwId as hw',
                     'hwScore as Score'
                 )->pluck('Score', 'hw');
-  
+			$submit = DB::table('submits')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+                    'practice as Practice',
+					'created_at as Create',
+					'updated_at as Update'
+                )->pluck('Practice', 'hw','Create','Update');
+             
+          
             return view('std.home',[
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,
 				'scores' => $score,
+				'submits' => $submit
 			]);
         }else{
             $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();
