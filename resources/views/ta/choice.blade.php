@@ -6,7 +6,7 @@
 <div class="content-head">
 	@yield('title')
 	<div class="content-head-btn">
-		<a href="#" class="std-button-upload">新增</a>
+		<a href="{{ url('choice/create') }}" class="std-button-upload">新增</a>
 	</div>
 </div>
 @if (session('status'))
