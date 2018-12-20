@@ -46,7 +46,11 @@
 		<td><a href="#" class="std-button-warning">作答</a></td>
 		<td><a href="#" class="std-button-upload">上傳</a></td>
 		<td>尚未繳交</td>
-		<td>{{ $scores}}</td>
+		@if($hw->id < count($scores)+1)
+		<td>{{ $scores[$hw->id] }}</td>
+		@else
+		<td>0</td>
+		@endif
 		<td><div class="std-button-disabled">觀看</div></td>
 	</tr>
 	@endforeach

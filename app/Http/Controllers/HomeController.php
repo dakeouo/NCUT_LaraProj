@@ -34,9 +34,10 @@ class HomeController extends Controller
     			'finish_at'
     		)->get();
         	$HWname=["無","作業一","作業二","作業三","作業四","作業五","作業六","期末作業"];
-            $score = DB::table('scores')->where('userId','Auth::user()->uid')->select(
-                    'hwScore'
-                )->get();
+            $score = DB::table('scores')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+                    'hwScore as Score'
+                )->pluck('Score', 'hw');
   
             return view('std.home',[
 			    'homeworks' => $homeworks,
