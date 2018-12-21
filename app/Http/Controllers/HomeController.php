@@ -44,8 +44,7 @@ class HomeController extends Controller
 					'created_at as Create',
 					'updated_at as Update'
                 )->pluck('Practice', 'hw','Create','Update');
-             
-          
+
             return view('std.home',[
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,

@@ -36,7 +36,7 @@
 		<th width="8%">作業分數</th>
 		<th width="">評語</th>
 	</tbody>
-@if (count($homeworks) > 0)
+@if (count($homeworks) > 0) 
 	@foreach($homeworks as $hw)	
 	<tr>
 		<td>{{ $HWname[$hw->id] }}</td>
@@ -55,7 +55,13 @@
 		@else
 		<td>0</td>
 		@endif
-		<td><div class="std-button-disabled">觀看</div></td>
+		<td>
+		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
+			<div class="std-button-disabled">觀看</div>
+		@else
+			<a href="#" class="std-button-primary">觀看</a>
+		@endif
+		</td>
 	</tr>
 	@endforeach
 @endif
