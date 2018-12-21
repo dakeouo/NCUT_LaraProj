@@ -83,7 +83,6 @@ class ChoiceController extends Controller
             'title' => '修改選擇題',
             'FormType' => 'Edit',
             'action' => $id,
-            //'action' => '/home',
             'chName' => $this->chName,
             'chAns' => $this->chAns,
             'choices' => $choices,

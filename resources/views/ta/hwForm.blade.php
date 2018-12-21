@@ -24,7 +24,11 @@
             <label style="text-align: left;">類別</label>
             <select class="pure-input-1-1" name="hwType">
             @for($i = 0;$i < count($hwType);$i++)
+                @if(($FormType == "Edit")&&($homeworks->hwType == $i))
+                <option value="{{ $i }}" selected>{{ $hwType[$i] }}</option>
+                @else
                 <option value="{{ $i }}">{{ $hwType[$i] }}</option>
+                @endif
             @endfor
             </select>
         </div>
@@ -33,7 +37,11 @@
             <label style="text-align: left;">作業名稱</label>
             <select class="pure-input-1-1" name="hwNo">
             @for($i = 0;$i < count($hwName);$i++)
+                @if(($FormType == "Edit")&&(($homeworks->hwNo)%10 == $i))
+                <option value="{{ $i }}" selected>{{ $hwName[$i] }}</option>
+                @else
                 <option value="{{ $i }}">{{ $hwName[$i] }}</option>
+                @endif
             @endfor
             </select>
         </div>
@@ -41,7 +49,13 @@
         <div class="pure-control-group">
             <table><tr>
                 <td><label style="text-align: left;">比重</label></td>
-                <td><input id="weight" width="200" name="weight" /></td>
+                <td>
+                @if($FormType == "Edit")
+                    <input id="weight" width="200" name="weight" value="{{ $homeworks->weight }}" />
+                @else
+                    <input id="weight" width="200" name="weight" />
+                @endif
+                </td>
                 <td><span id="value"></span>%</td>
             </tr></table>
         </div>
@@ -49,22 +63,38 @@
         <div class="pure-control-group">
             <table><tr>
                 <td><label style="text-align: left;">起始時間</label></td>
-                <td><input id="sTime" width="200" name="startTime" /></td>
+                <td>
+                @if($FormType == "Edit")
+                    <input id="sTime" width="200" name="startTime" value="{{ $homeworks->startTime }}" />
+                @else
+                    <input id="sTime" width="200" name="startTime" />
+                @endif
+                </td>
             </tr></table>
             </div>
                     
             <div class="pure-control-group">
             <table><tr>
                 <td><label style="text-align: left;">結束時間</label></td>
-                <td><input id="eTime" width="200" name="endTime" /></td>
+                <td>
+                @if($FormType == "Edit")
+                    <input id="eTime" width="200" name="endTime" value="{{ $homeworks->endTime }}" />
+                @else
+                    <input id="eTime" width="200" name="endTime" />
+                @endif
+                </td>
             </tr></table>
         </div>
 
         <div class="pure-control-group">
-                <label style="text-align: left;">作業說明</label>
-                <textarea id="hwText" name="hwText"></textarea>
+            <label style="text-align: left;">作業說明</label>
+            <textarea id="hwText" name="hwText">
+            @if($FormType == "Edit")
+                {{ $homeworks->hwText }}
+            @endif
+            </textarea>
         </div>
-        
+
    	</fieldset>
    	@if($FormType == "Create")
    		<input type="submit" class="std-button-upload" value="新增作業項目">

@@ -29,7 +29,7 @@
 		<td>{{ $hwName[$hw->id] }}</td>
 		<td>{{ $hw->weight }}%</td>
 		<td><a href="#" class="std-button-primary">說明</a></td>
-		<td><a href="#" class="std-button-warning">修改</a></td>
+		<td><a href="homework/edit/{{ $hw->id }}" class="std-button-warning">修改</a></td>
 		<td><a href="#" class="std-button-upload">批改</a></td>
 		<td>{{ $hw->start_at }}</td>
 		<td>{{ $hw->finish_at }}</td>
@@ -56,7 +56,7 @@
 		<td>{{ $hwName[($hw->id)%10] }}</td>
 		<td>{{ $hw->weight }}%</td>
 		<td><a href="#" class="std-button-primary">說明</a></td>
-		<td><a href="#" class="std-button-warning">修改</a></td>
+		<td><a href="homework/edit/{{ $hw->id }}" class="std-button-warning">修改</a></td>
 		<td><a href="#" class="std-button-upload">批改</a></td>
 		<td>{{ $hw->start_at }}</td>
 		<td>{{ $hw->finish_at }}</td>

@@ -81,4 +81,35 @@ class HomeworkController extends Controller
 
         return redirect('/homework');
     }
+
+    public function edit($id){
+
+        $homeworks = DB::table('homeworks')->select(
+            'type as hwType', 'id as hwNo','weight',
+            'contect as hwText','start_at as startTime','finish_at as endTime'
+        )->where('id',$id)->first();
+
+        return view('ta.hwForm',[
+            'title' => '修改作業項目',
+            'FormType' => 'Edit',
+            'action' => $id,
+            'hwName' => $this->hwName,
+            'hwType' => $this->hwType,
+            'homeworks' => $homeworks,
+        ]);
+    }
+
+    public function update(Request $request, $id){
+
+        DB::table('homeworks')->where('id', $id)->update([
+            'type' => $request->hwType, 
+            'id' => ($request->hwNo)+($request->hwType)*10,
+            'weight' => $request->weight,
+            'contect' => $request->hwText,
+            'start_at' => $request->startTime,
+            'finish_at' => $request->endTime,
+        ]);
+
+        return redirect('/homework');
+    }
 }
