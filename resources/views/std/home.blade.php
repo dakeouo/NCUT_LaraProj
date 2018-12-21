@@ -59,7 +59,7 @@
 		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
 			<div class="std-button-disabled">觀看</div>
 		@else
-			<a href="#" class="std-button-primary">觀看</a>
+			<a href="homework/cmshow/{{ $hw->id }}" class="std-button-primary">觀看</a>
 		@endif
 		</td>
 	</tr>
