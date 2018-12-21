@@ -118,4 +118,14 @@ class HomeworkController extends Controller
 
         return redirect('/homework');
     }
+
+    public function show($id){
+        $hw = DB::table('homeworks')->select('id','contect')->where('id',$id)->first();
+
+        return view('std.hwShow',[
+            'title' => $this->hwName[$id%10],
+            'backUrl' => url('homework'),
+            'hw' => $hw,
+        ]);
+    }
 }
