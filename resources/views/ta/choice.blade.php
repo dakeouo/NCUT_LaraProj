@@ -25,7 +25,7 @@
 @if (count($choices) > 0)
 	@foreach($choices as $ch)
 	<tr>
-		<td style="display: inline-block;">
+		<td style="align-items: center;">
 		<form action="choice/delete/{{ $ch->id }}" method="POST">
 		<a href="choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>
 		&nbsp;

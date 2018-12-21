@@ -33,8 +33,8 @@ Route::group(['prefix' => 'choice', 'middleware' => 'auth'], function() {
 	Route::delete('delete/{id}', ['uses' => 'ChoiceController@destroy']);
 });
 
-
-Route::get('/homework', [
-    'middleware' => 'auth',
-    'uses' => 'HomeworkController@index'
-]);
+Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
+	Route::get('/', ['uses' => 'HomeworkController@index']);
+	Route::get('create', ['uses' => 'HomeworkController@create']);
+	Route::post('create', ['as' => 'homework.create', 'uses' => 'HomeworkController@store']);
+});

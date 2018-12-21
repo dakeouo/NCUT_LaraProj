@@ -23,7 +23,7 @@
    		<div class="pure-control-group">
             <label style="text-align: left;">章節</label>
             <select class="pure-input-1-1" name="chap">
-            @for($i=1;$i<=7;$i++)
+            @for($i = 1;$i < count($chName);$i++)
             	@if(($FormType == "Edit")&&($choices->chap == $i))
             	<option value="{{ $i }}" selected>第{{ $chName[$i] }}章</option>
             	@else
@@ -36,7 +36,7 @@
         <div class="pure-control-group">
             <label style="text-align: left;">大題</label>
             <select class="pure-input-1-1" name="grop">
-            @for($i=1;$i<=6;$i++)
+            @for($i = 1;$i < count($chName);$i++)
             	@if(($FormType == "Edit")&&($choices->grop == $i))
             	<option value="{{ $i }}" selected>第{{ $chName[$i] }}大題</option>
             	@else
@@ -64,7 +64,7 @@
             	<input type="text" class="pure-input-1" placeholder="選項 (C)" name="optionC" value="{{ $choices->option3 }}" required>
             	<input type="text" class="pure-input-1" placeholder="選項 (D)" name="optionD" value="{{ $choices->option4 }}" required>
 			@else
-            	@for($i=1;$i<=4;$i++)
+            	@for($i = 1;$i < count($chAns);$i++)
             	<input type="text" class="pure-input-1" placeholder="選項 ({{ $chAns[$i] }})" name="option{{ $chAns[$i] }}" required>
             	@endfor
             @endif	
@@ -74,7 +74,7 @@
         <div class="pure-control-group">
             <label style="text-align: left;">答案</label>
             <select class="pure-input-1-1" name="ans">
-            @for($i=1;$i<=4;$i++)
+            @for($i = 1;$i < count($chAns);$i++)
             	@if(($FormType == "Edit")&&($choices->ans == $i))
             	<option value="{{ $i }}" selected>{{ $chAns[$i] }}</option>
             	@else

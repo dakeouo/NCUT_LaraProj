@@ -49,7 +49,7 @@ class ChoiceController extends Controller
 
     public function create(){
 
-        return view('ta.choiceFrom',[
+        return view('ta.choiceForm',[
             'title' => '建立選擇題',
             'FormType' => 'Create',
             'action' => route('choice.create'),
@@ -79,7 +79,7 @@ class ChoiceController extends Controller
             'option1','option2','option3','option4'
         )->where('id',$id)->first();
 
-        return view('ta.choiceFrom',[
+        return view('ta.choiceForm',[
             'title' => '修改選擇題',
             'FormType' => 'Edit',
             'action' => $id,

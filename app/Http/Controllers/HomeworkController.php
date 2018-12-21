@@ -23,8 +23,12 @@ class HomeworkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+
+    public $hwName=["請選擇...","作業一","作業二","作業三","作業四","作業五","作業六","期末作業"];
+    public $hwType = ["一般","補交"];
+
+    public function index(){
+
         if(Auth::user()->type == "正式生"){
             return view('std.home');
         }else{
@@ -35,13 +39,46 @@ class HomeworkController extends Controller
     			'start_at',
     			'finish_at'
     		)->get();
-        	$HWname=["無","作業一","作業二","作業三","作業四","作業五","作業六","期末作業"];
+
+            $homeworks1 = DB::table('homeworks')->where('type','1')
+            ->select(
+                'id', 
+                'weight',
+                'start_at',
+                'finish_at'
+            )->get();
 
            return view('ta.hw',[
                 'homeworks' => $homeworks,
-                'HWname' => $HWname,
+                'homeworks1' => $homeworks1,
+                'hwName' => $this->hwName,
             ]);
         }
         //return view('home');
+    }
+
+    public function create(){
+
+        return view('ta.hwForm',[
+            'title' => '新增作業項目',
+            'FormType' => 'Create',
+            'action' => route('homework.create'),
+            'hwName' => $this->hwName,
+            'hwType' => $this->hwType,
+        ]);
+    }
+
+    public function store(Request $request){
+
+        DB::table('homeworks')->insert([
+            'type' => $request->hwType, 
+            'id' => ($request->hwNo)+($request->hwType)*10,
+            'weight' => $request->weight,
+            'contect' => $request->hwText,
+            'start_at' => $request->startTime,
+            'finish_at' => $request->endTime,
+        ]);
+
+        return redirect('/homework');
     }
 }
