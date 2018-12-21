@@ -26,8 +26,8 @@
 	@foreach($choices as $ch)
 	<tr>
 		<td style="align-items: center;">
-		<form action="choice/delete/{{ $ch->id }}" method="POST">
-		<a href="choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>
+		<form action="/choice/delete/{{ $ch->id }}" method="POST">
+		<a href="/choice/edit/{{ $ch->id }}" class="std-button-warning">修改</a>
 		&nbsp;
 		{{ csrf_field() }}
         {{ method_field('DELETE') }}

@@ -98,10 +98,16 @@
    	</fieldset>
    	@if($FormType == "Create")
    		<input type="submit" class="std-button-upload" value="新增作業項目">
+    </form>
    	@elseif($FormType == "Edit")
    		<input type="submit" class="std-button-warning" value="修改作業項目">
+    </form>
+    <form action="/homework/delete/{{ $homeworks->hwNo }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input type="submit" class="std-button-error" value="刪除作業項目" style="width: 100%;">
+    </form>
    	@endif
-   	</form>
 </div>
 
 <script>

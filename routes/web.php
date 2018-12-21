@@ -39,4 +39,5 @@ Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
 	Route::post('create', ['as' => 'homework.create', 'uses' => 'HomeworkController@store']);
 	Route::get('edit/{id}', ['uses' => 'HomeworkController@edit']);
 	Route::patch('edit/{id}', ['as' => 'homework.edit', 'uses' => 'HomeworkController@update']);
+	Route::delete('delete/{id}', ['uses' => 'HomeworkController@destroy']);
 });

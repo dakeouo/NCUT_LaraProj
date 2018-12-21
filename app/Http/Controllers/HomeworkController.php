@@ -112,4 +112,10 @@ class HomeworkController extends Controller
 
         return redirect('/homework');
     }
+
+    public function destroy(Request $request, $id){
+        DB::table('homeworks')->where('id', $id)->delete();
+
+        return redirect('/homework');
+    }
 }
