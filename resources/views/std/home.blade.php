@@ -42,7 +42,7 @@
 		<td>{{ $HWname[$hw->id] }}</td>
 		<td>{{ $hw->weight }}%</td>
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
-		<td><a href="#" class="std-button-primary">說明</a></td>
+		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
 		<td><a href="#" class="std-button-warning">作答</a></td>
 		@if($hw->id < count($submits)+1)
 		<td>已上傳</td>

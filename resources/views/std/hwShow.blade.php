@@ -9,7 +9,7 @@
 	@endif
 	@yield('title')
 	<div class="content-head-btn">
-		<a href="{{ $backUrl }}" class="std-button-primary">返回</a>
+		<a href="{{ url('home') }}" class="std-button-primary">返回</a>
 	</div>
 </div>
 @if (session('status'))
