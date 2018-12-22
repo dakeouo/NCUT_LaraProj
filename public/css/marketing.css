@@ -116,6 +116,18 @@ button{
     text-align: center;
 }
 
+.profile-edit{
+    position: relative;
+    top: 2em;
+    margin: 0 auto;
+    padding: 10px;
+    width: 540px;
+    border-radius: 20px;
+    border-color: #eee;
+    border-style: solid;
+    text-align: center;
+}
+
 .profile{
     position: relative;
     top: 2em;

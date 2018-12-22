@@ -24,7 +24,7 @@
 			</label>
 		</div></td>
 	</tr><tr>
-		<td colspan="2"><a href="#" class="std-button-warning" style="width: 100%; text-align: center;">修改個人資料</a></td>
+		<td colspan="2"><a href="/profile/edit" class="std-button-warning" style="width: 100%; text-align: center;">修改個人資料</a></td>
 	</tr></table>
 </div>
 @endsection

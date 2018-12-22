@@ -19,10 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@profile'
-]);
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
+	Route::get('/', ['uses' => 'HomeController@profile']);
+	Route::get('edit', ['uses' => 'HomeController@edit']);
+	Route::post('edit', ['as' => 'profile.edit', 'uses' => 'HomeController@update']);
+});
 
 Route::group(['prefix' => 'choice', 'middleware' => 'auth'], function() {
 	Route::get('/', ['uses' => 'ChoiceController@index']);

@@ -79,6 +79,40 @@ class HomeController extends Controller
     }
 
     public function edit(){
-        return view('profile');
+        return view('layouts.profileForm');
+    }
+
+    public function update(Request $request){
+
+        try{
+            $destinationPath = public_path().'/img/std/';
+            $filetype = $request->stdFile->getMimeType();
+            /*
+            $filename = $request->stdFile->getclientoriginalname();
+            */
+            if($filetype == 'application/jpeg') $fType = ".jpg";
+            else if($filetype == 'image/jpeg') $fType = ".jpeg";
+            else if($filetype == 'image/png') $fType = ".png";
+            else return "檔案格式錯誤";
+
+            //return $filetype;
+            $unique_name = Auth::user()->uid.$fType;
+            if($request->stdFile){
+                $request->file('stdFile')->move($destinationPath,$unique_name);
+                $request->stdFile = Auth::user()->uid.$fType;
+            }else{
+                $request->stdFile = Auth::user()->path;
+            }
+
+            DB::table('users')->where('uid', Auth::user()->uid)->update([
+                'path' => $request->stdFile, 
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            return redirect('/profile');
+        }catch (\Exception $e){
+            return "發生錯誤";
+        }
     }
 }
