@@ -75,6 +75,10 @@ class HomeController extends Controller
     }
 
     public function profile(){
+        return view('layouts.profile');
+    }
+
+    public function edit(){
         return view('profile');
     }
 }

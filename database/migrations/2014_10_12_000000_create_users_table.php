@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('uid',15)->unique();
             $table->string('type',20)->default("正式生");
+            $table->string('path')->default("null.png");
             $table->string('name',30);
             $table->string('password');
             $table->string('email')->unique();

@@ -9,13 +9,7 @@
 @endif
 <table><tr>
 	<td><div class="table_img img_100" align="center">
-	@if(file_exists(public_path().'/img/std/'.Auth::user()->uid.'.jpg'))
-		<img src="{{ asset('img/std/'.Auth::user()->uid.'.jpg') }}">
-	@elseif(file_exists(public_path().'/img/std/'.Auth::user()->uid.'.png'))
-		<img src="{{ asset('img/std/'.Auth::user()->uid.'.png') }}">
-	@else
-		<img src="{{ asset('img/std/null.jpg') }}">
-	@endif
+		<img src="{{ asset('img/std/'.Auth::user()->path) }}">
 	</div></td>	
 	<td height="100px" style="padding: 0 20px;">
 		<label class="std-name">{{ Auth::user()->name }}</label><br />
