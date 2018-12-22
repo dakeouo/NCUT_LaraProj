@@ -9,7 +9,11 @@
 	@endif
 	@yield('title')
 	<div class="content-head-btn">
+	@if(Auth::user()->type == "正式生")
 		<a href="{{ url('home') }}" class="std-button-primary">返回</a>
+	@else
+		<a href="{{ url('homework') }}" class="std-button-primary">返回</a>
+	@endif
 	</div>
 </div>
 @if (session('status'))

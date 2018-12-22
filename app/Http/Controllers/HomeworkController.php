@@ -30,7 +30,7 @@ class HomeworkController extends Controller
     public function index(){
 
         if(Auth::user()->type == "正式生"){
-            return view('std.home');
+            return redirect('home');
         }else{
         	$homeworks = DB::table('homeworks')->where('type','0')
         	->select(
@@ -58,6 +58,7 @@ class HomeworkController extends Controller
     }
 
     public function create(){
+        if(Auth::user()->type == "正式生") return redirect('home');
 
         return view('ta.hwForm',[
             'title' => '新增作業項目',
@@ -83,6 +84,7 @@ class HomeworkController extends Controller
     }
 
     public function edit($id){
+        if(Auth::user()->type == "正式生") return redirect('home');
 
         $homeworks = DB::table('homeworks')->select(
             'type as hwType', 'id as hwNo','weight',
