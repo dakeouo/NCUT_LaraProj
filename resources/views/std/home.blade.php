@@ -37,8 +37,12 @@
 		<td>{{ $hw->weight }}%</td>
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
+        @if($hw->id < count($choice)+1)
+		<td><b>{{ $choice[$hw->id] }}</b>/10</td>
+	    @else
 		<td><a href="#" class="std-button-warning">作答</a></td>
-		@if($hw->id < count($submits)+1)
+	   @endif
+		@if($hw->id < count($homework)+1)
 		<td>已上傳</td>
 	    @else
 		<td><a href="#" class="std-button-upload">上傳</a></td>

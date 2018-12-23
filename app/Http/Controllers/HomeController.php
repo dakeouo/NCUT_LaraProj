@@ -50,13 +50,18 @@ class HomeController extends Controller
                     'hwId as hw',
 					'updated_at as Update'
                 )->pluck( 'Update','hw'); 
+			$subchoice = DB::table('submits')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+					'choice as Choice'
+                )->pluck( 'Choice','hw'); 
             return view('std.home',[
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,
 				'scores' => $score,
-				'submits' => $submit,
+				'homework' => $submit,
 				'create' => $subtime,
 				'update' => $subupdate,
+				'choice' => $subchoice,
 			]);
         }else{
             $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();
