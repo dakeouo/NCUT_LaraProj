@@ -42,5 +42,5 @@ Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
 	Route::patch('edit/{id}', ['as' => 'homework.edit', 'uses' => 'HomeworkController@update']);
 	Route::delete('delete/{id}', ['uses' => 'HomeworkController@destroy']);
 	Route::get('show/{id}', ['uses' => 'HomeworkController@show']);
-	Route::get('cmshow/{id}', ['uses' => 'HomeworkController@cmshow']);
+	Route::get('hwScore/{id}', ['uses' => 'HomeworkController@hwScore']);
 });

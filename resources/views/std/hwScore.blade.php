@@ -15,10 +15,12 @@
 @if (session('status'))
     <div class="alert-success" role="alert">{{ session('status') }}</div>
 @endif
-@if($hw->id < count($scores)+1)
-		<td><div style="color: #34495e;">成績 : {!! $scores[$hw->id] !!}</td>
+@if($hw->id < count($hws)+1)
+		<td><div style="color: #34495e;">成績 :<br />{!! $hws[$hw->id] !!}</td>
 		@else
 		<td>0</td>
 		@endif
+		
+	<div style="color: #34495e;">評語 : <br />{!! $hwc[$hw->id] !!}</div>
 
 @endsection

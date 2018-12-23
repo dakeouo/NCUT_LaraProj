@@ -123,24 +123,28 @@ class HomeworkController extends Controller
 
     public function show($id){
         $hw = DB::table('homeworks')->select('id','contect')->where('id',$id)->first();
-
         return view('std.hwShow',[
             'title' => $this->hwName[$id%10],
             'backUrl' => url('homework'),
             'hw' => $hw,
         ]);
     }
-	public function cmshow($id){
+	public function hwScore($id){
         $hw = DB::table('homeworks')->select('id','contect')->where('id',$id)->first();
 		 $score = DB::table('scores')->where('userId',Auth::user()->uid)->select(
                     'hwId as hw',
                     'hwScore as Score'
                 )->pluck('Score', 'hw');
-        return view('std.cmShow',[
+		$comment = DB::table('scores')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+                    'hwComment as Comment'
+                )->pluck('Comment', 'hw');		
+        return view('std.hwScore',[
             'title' => $this->hwName[$id%10],
             'backUrl' => url('homework'),
             'hw' => $hw,
-			'scores' => $score,
+			'hws' => $score,
+			'hwc' => $comment,
         ]);
     }
 }
