@@ -43,7 +43,15 @@
 	    @else
 		<td><a href="#" class="std-button-upload">上傳</a></td>
 	    @endif
+		@if($hw->id < count($create)+1)
+		@if($hw->id < count($update))
+		<td>{{ $create[$hw->id] }}</td>
+	    @else
+		<td>{{ $update[$hw->id] }}</td>
+	    @endif
+	    @else
 		<td>尚未繳交</td>
+	    @endif
 		@if($hw->id < count($scores)+1)
 		<td>{{ $scores[$hw->id] }}</td>
 		@else

@@ -40,16 +40,23 @@ class HomeController extends Controller
                 )->pluck('Score', 'hw');
 			$submit = DB::table('submits')->where('userId',Auth::user()->uid)->select(
                     'hwId as hw',
-                    'practice as Practice',
-					'created_at as Create',
+                    'practice as Practice'
+                )->pluck('Practice', 'hw');
+            $subtime = DB::table('submits')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+					'created_at as Create'
+                )->pluck( 'Create','hw'); 
+			$subupdate = DB::table('submits')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
 					'updated_at as Update'
-                )->pluck('Practice', 'hw','Create','Update');
-
+                )->pluck( 'Update','hw'); 
             return view('std.home',[
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,
 				'scores' => $score,
-				'submits' => $submit
+				'submits' => $submit,
+				'create' => $subtime,
+				'update' => $subupdate,
 			]);
         }else{
             $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();
