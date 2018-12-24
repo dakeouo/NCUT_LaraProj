@@ -25,11 +25,6 @@ label {
     color: #34495e;
 }
 
-button{
-    display: inline-block;
-    text-decoration: none;
-}
-
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -61,6 +56,64 @@ button{
     background-color:  #ceffce;
     font-size: 0.7em;
     border-radius: 10px;
+}
+
+.mark-container{
+    position: relative;
+    /*overflow-x: hidden;*/
+    width: 100%;
+    height: auto;
+}
+
+.mark-nav{
+    position: relative;
+    overflow-y: auto;
+    width: 300px;
+    height: 380px;
+}
+
+.mark-nav-item{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-color: #eee;
+    border-style: solid;
+    border-width: 0.1em;
+    background-color: #becbda;
+    color: #34495e;
+}
+
+.mark-nav-item font a{
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.mark-nav-item label[tag="name"] a:hover{
+    color: white;
+}
+
+.mark-nav-item:hover{
+    background-color: #394b60;
+    color: white;
+}
+
+.mark-contect{
+    position: relative;
+    top: -380px;
+    left: 300px;
+    width: 78%;
+    padding: 20px;
+    height: auto;
+    /*background-color: gray;*/
+}
+
+.mark-contect label{
+    position: relative;
+    left: 40%;
+    font-size: 30px;
+
 }
 /*
  * -- LAYOUT STYLES --
@@ -187,8 +240,8 @@ button{
 }
 
 .img_50{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 .img_100{
     width: 100px;

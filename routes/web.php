@@ -43,4 +43,5 @@ Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
 	Route::delete('delete/{id}', ['uses' => 'HomeworkController@destroy']);
 	Route::get('show/{id}', ['uses' => 'HomeworkController@show']);
 	Route::get('hwScore/{id}', ['uses' => 'HomeworkController@hwScore']);
+	Route::get('mark/{id}/{uid?}', ['uses' => 'HomeworkController@mark']);
 });

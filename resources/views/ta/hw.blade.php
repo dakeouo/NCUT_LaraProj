@@ -30,7 +30,7 @@
 		<td>{{ $hw->weight }}%</td>
 		<td><a href="/homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
 		<td><a href="/homework/edit/{{ $hw->id }}" class="std-button-warning">修改</a></td>
-		<td><a href="#" class="std-button-upload">批改</a></td>
+		<td><a href="/homework/mark/{{ $hw->id }}" class="std-button-upload">批改</a></td>
 		<td>{{ $hw->start_at }}</td>
 		<td>{{ $hw->finish_at }}</td>
 	</tr>
@@ -57,7 +57,7 @@
 		<td>{{ $hw->weight }}%</td>
 		<td><a href="/homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
 		<td><a href="/homework/edit/{{ $hw->id }}" class="std-button-warning">修改</a></td>
-		<td><a href="#" class="std-button-upload">批改</a></td>
+		<td><a href="/homework/mark/{{ $hw->id }}" class="std-button-upload">批改</a></td>
 		<td>{{ $hw->start_at }}</td>
 		<td>{{ $hw->finish_at }}</td>
 	</tr>

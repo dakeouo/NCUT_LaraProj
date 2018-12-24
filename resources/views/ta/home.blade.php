@@ -27,8 +27,8 @@
 		<td>{{ $std->uid }}</td>
 		<td>{{ $std->name }}</td>
 		@for($i = 0;$i < 7;$i++)
-			@if (count($scores[$i]) > 0)
-			<td>{{ $scores[$i][$std->uid] }}</td>
+			@if(isset($scores[$i][$std->uid]))
+				<td>{{ $scores[$i][$std->uid] }}</td>
 			@else
 			<td>0</td>
 			@endif

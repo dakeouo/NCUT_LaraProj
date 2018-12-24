@@ -147,4 +147,21 @@ class HomeworkController extends Controller
 			'hwc' => $comment,
         ]);
     }
+
+    public function mark($id,$uid="null"){
+        $users = DB::table('users')->where('type','正式生')->select('name', 'uid', 'path')->get();
+        if($uid != "null"){
+            $idt = DB::table('users')->where('uid',$uid)->select('name', 'uid', 'path')->first();
+        }else{
+            $idt = [];
+        }
+
+
+        return view("ta.hwMark",[
+            'title' => $this->hwName[$id%10]."批改",
+            'id' => $id,
+            'idt' => $idt,
+            'users' => $users,
+        ]);
+    }
 }
