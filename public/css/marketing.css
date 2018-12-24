@@ -84,6 +84,11 @@ label {
     color: #34495e;
 }
 
+.mark-nav-item[isSelect="1"]{
+    background-color: #2d3e50;
+    color: white;
+}
+
 .mark-nav-item font a{
     display: inline-block;
     text-decoration: none;

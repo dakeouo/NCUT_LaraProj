@@ -19,7 +19,11 @@
 	<div class="mark-nav">
 	@if(count($users) > 0)
 		@foreach($users as $user)
+		@if($idt->uid == $user->uid)
+		<div class="mark-nav-item" isSelect="1">
+		@else
 		<div class="mark-nav-item">
+		@endif
 			<table style="position: relative; top: -5px;"><tr>
 				<td><div class="table_img img_50" align="center">
 					<img src="{{ asset('img/std/'.$user->path) }}">
@@ -37,7 +41,7 @@
 	</div>
 	<div class="mark-contect">
 	@if(count($idt) > 0)
-		
+
 	@else
 		<label>請點選左側所列學員</label>
 	@endif
