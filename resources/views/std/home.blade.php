@@ -38,7 +38,7 @@
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
         @if($hw->id < count($choice)+1)
-		<td><b>{{ $choice[$hw->id] }}</b>/10</td>
+		<td><b><font size="6">{{ $choice[$hw->id] }}</font></b>/10</td>
 	    @else
 		<td><a href="#" class="std-button-warning">作答</a></td>
 	   @endif

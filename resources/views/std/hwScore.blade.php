@@ -16,11 +16,11 @@
     <div class="alert-success" role="alert">{{ session('status') }}</div>
 @endif
 @if($hw->id < count($hws)+1)
-		<td><div style="color: #34495e;">成績 :<br />{!! $hws[$hw->id] !!}</td>
+		<td><div style="color: #34495e;">成績 :<br /><font size="5">{!! $hws[$hw->id] !!} 分</font></td>
 		@else
-		<td>0</td>
+		<td>0分</td>
 		@endif
 		
-	<div style="color: #34495e;">評語 : <br />{!! $hwc[$hw->id] !!}</div>
+	<div style="color: #34495e;">評語 : <br /><font size="5">{!! $hwc[$hw->id] !!}</font></div>
 
 @endsection
