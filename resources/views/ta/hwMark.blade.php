@@ -115,10 +115,11 @@
 				<br /><br />
 				<input type="submit" class="std-button-upload" value="送出成績">
 			</form>
-		</div></td></tr></table>
+		</div>
 	@else
 		<label>請點選左側所列學員</label>
 	@endif
+	</td></tr></table>
 	</div>
 </div>
 @endsection
