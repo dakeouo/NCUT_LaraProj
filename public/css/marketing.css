@@ -69,7 +69,40 @@ label {
     position: relative;
     overflow-y: auto;
     width: 300px;
-    height: 380px;
+    height: 420px;
+}
+
+.mark-nav-link{
+    position: relative;
+    align-items: center;
+    left: -14px;
+}
+
+.mark-nav-link ul li{
+    display:inline;
+}
+
+.mark-nav-link ul li a{
+    position: relative;
+    text-decoration: none;
+    padding: 2px 6px;
+    background-color: #becbda;
+    color: #34495e;
+    border-radius: 3px;
+}
+.mark-nav-link ul li span{
+    position: relative;
+    padding: 2px 6px;
+    background-color: #2d3e50;
+    color: white;
+    border-radius: 3px;
+}
+
+.mark-nav-link ul li a[rel="prev"],
+.mark-nav-link ul li a[rel="next"],
+.mark-nav-link ul li span[rel="prev"],
+.mark-nav-link ul li span[rel="next"]{
+    padding: 2px 8px;
 }
 
 .mark-nav-item{
@@ -106,12 +139,13 @@ label {
 
 .mark-contect{
     position: relative;
-    top: -380px;
+    margin-left: 20px;
+    top: -420px;
     left: 300px;
     width: 78%;
     padding: 20px;
     height: auto;
-    /*background-color: gray;*/
+    color: #394b60;
 }
 
 .mark-contect label{

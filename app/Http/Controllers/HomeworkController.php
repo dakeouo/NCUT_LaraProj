@@ -149,7 +149,12 @@ class HomeworkController extends Controller
     }
 
     public function mark($id,$uid="null"){
-        $users = DB::table('users')->where('type','正式生')->select('name', 'uid', 'path')->get();
+        $users = DB::table('users')->where('type','正式生')->select('name', 'uid', 'path')->Paginate(6);
+
+        $submits = DB::table('submits')->where('hwId',$id)
+        ->select('userId', 'choice', 'practice', 'created_at', 'updated_at')->get();
+        $keyed = $submits->keyBy('userId');
+
         if($uid != "null"){
             $idt = DB::table('users')->where('uid',$uid)->select('name', 'uid', 'path')->first();
         }else{
@@ -161,6 +166,7 @@ class HomeworkController extends Controller
             'title' => $this->hwName[$id%10]."批改",
             'id' => $id,
             'idt' => $idt,
+            'submits' => $keyed,
             'users' => $users,
         ]);
     }
