@@ -15,7 +15,7 @@
 @if (session('status'))
     <div class="alert-success" role="alert">{{ session('status') }}</div>
 @endif
-<div class="mark-container">
+<div class="mark-container"><table><tr><td style="vertical-align:text-top;">
 	<div class="mark-nav">
 	@if(count($users) > 0)
 		@foreach($users as $user)
@@ -39,7 +39,7 @@
 		@endforeach
 		<div class="mark-nav-link">{!! $users->links() !!}</div>
 	@endif
-	</div>
+	</div></td><td style="vertical-align:text-top;">
 	<div class="mark-contect">
 	@if(count($idt) > 0)
 		<table style="position: relative; top: -5px;"><tr>
@@ -52,7 +52,7 @@
 					{{ $idt->uid }}&nbsp;{{ $idt->name }}
 				</font>
 			</td>
-			<td style="position: relative; left: 100px;">
+			<td style="position: relative; left: 60px;">
 				<font style="position: relative; top: -9px; font-size: 12px; margin-right: 10px;">選擇題分數</font>
 				@if((count($submits) > 0)&&(isset($submits[$idt->uid])))
 				<b style="font-size: 16px;"><font size="6">{{ $submits[$idt->uid]->choice }}</font></b>/10
@@ -60,22 +60,22 @@
 				<b><font size="6">未填寫</font></b>
 				@endif
 			</td>
-			<td style="position: relative; left: 200px;">
+			<td style="position: relative; left: 120px;">
 				<font style="position: relative; top: -9px; font-size: 12px; margin-right: 10px;">實作題檔案</font>
 				@if((count($submits) > 0)&&(isset($submits[$idt->uid]))&&($submits[$idt->uid]->practice))
 				<b><font size="6">已上傳</font></b>
 				@else
-				<b><font size="6">------</font></b>
+				<b><font size="6">-----</font></b>
 				@endif
 			</td>
-			<td style="position: relative; left: 300px;">
+			<td style="position: relative; left: 180px;">
 				@if((count($submits) > 0)&&(isset($submits[$idt->uid])))
-				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">上傳日期</font>
+				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">繳交日期</font>
 				<b><font size="4">{{ $submits[$idt->uid]->created_at }}</font></b><br />
 				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">更新日期</font>
 				<b><font size="4">{{ $submits[$idt->uid]->updated_at }}</font></b><br />
 				@else
-				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">上傳日期</font>
+				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">繳交日期</font>
 				<b><font size="4">00-00-00 00:00:00</font></b><br />
 				<font style="position: relative; top: -3px; font-size: 12px; margin-right: 10px;">更新日期</font>
 				<b><font size="4">00-00-00 00:00:00</font></b><br />
@@ -83,6 +83,39 @@
 			</td>
 		</tr></table>
 		<hr style="color:#eee; position: relative; top: -10px;" />
+		<div class="mark-contect-form">
+			<b>上傳附檔</b><br />
+			<div class="mark-form-dir">
+			@if(Count($dir) > 0)
+				@foreach($dir as $file)
+				@if(($file != ".")&&($file != ".."))
+					<a href="/hw/{{ $id }}/{{ $idt->uid }}/{{ $file }}">
+					{!! $file !!}</a><br />
+				@endif
+				@endforeach
+			@else
+				無附檔
+			@endif
+			</div>
+			<br />
+			<form class="pure-form pure-form-aligned" method="POST" action="" >
+				{{ csrf_field() }}
+				<b>成績</b>
+				@if((count($HW) > 0)&&(isset($HW[$idt->uid])))
+				<input type="text" name="name" class="mark-form-input" value="{{ $HW[$idt->uid]->Score }}">
+				@else
+				<input type="text" name="name" class="mark-form-input" value="">
+				@endif
+				<b>評語</b>
+				@if((count($HW) > 0)&&(isset($HW[$idt->uid])))
+				<input type="text" name="comment" class="mark-form-input" value="{{ $HW[$idt->uid]->Comment }}">
+				@else
+				<input type="text" name="comment" class="mark-form-input" value="">
+				@endif
+				<br /><br />
+				<input type="submit" class="std-button-upload" value="送出成績">
+			</form>
+		</div></td></tr></table>
 	@else
 		<label>請點選左側所列學員</label>
 	@endif

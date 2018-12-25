@@ -14,3 +14,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 /public/img/std
+/public/hw

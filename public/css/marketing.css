@@ -67,15 +67,17 @@ label {
 
 .mark-nav{
     position: relative;
-    overflow-y: auto;
-    width: 300px;
+    overflow: hidden;
+    width: 260px;
     height: 420px;
+    /*background-color: gray;*/
 }
 
 .mark-nav-link{
     position: relative;
     align-items: center;
-    left: -14px;
+    width: 300px;
+    left: -34px;
 }
 
 .mark-nav-link ul li{
@@ -139,13 +141,19 @@ label {
 
 .mark-contect{
     position: relative;
-    margin-left: 20px;
-    top: -420px;
-    left: 300px;
-    width: 78%;
+    margin-left: 15px;
+    /*top: -35px;*/
+    /*left: 250px;*/
+    width: 73vw;
     padding: 20px;
     height: auto;
     color: #394b60;
+    /*background-color: #eee;*/
+}
+
+.mark-contect-form{
+    position: relative;
+    display: inline;
 }
 
 .mark-contect label{
@@ -153,6 +161,22 @@ label {
     left: 40%;
     font-size: 30px;
 
+}
+
+.mark-form-input{
+    position: relative; 
+    top: 7px; 
+    width: 100px; 
+    height: 35px;
+}
+
+.mark-form-dir{
+    position: relative; 
+    background-color: #eee; 
+    width: 100%; 
+    height: auto; 
+    padding: 10px;
+    border-radius: 10px;
 }
 /*
  * -- LAYOUT STYLES --

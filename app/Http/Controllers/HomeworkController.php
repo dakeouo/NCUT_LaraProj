@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use DB;
+use Storage;
 use Illuminate\Http\Request;
 
 class HomeworkController extends Controller
@@ -152,8 +153,22 @@ class HomeworkController extends Controller
         $users = DB::table('users')->where('type','正式生')->select('name', 'uid', 'path')->Paginate(6);
 
         $submits = DB::table('submits')->where('hwId',$id)
-        ->select('userId', 'choice', 'practice', 'created_at', 'updated_at')->get();
-        $keyed = $submits->keyBy('userId');
+        ->select('userId', 'choice', 'practice', 'created_at', 'updated_at')->get()->keyBy('userId');
+
+        $HW = DB::table('scores')->where('hwId',$id)->select(
+            'userId', 
+            'hwScore as Score',
+            'hwComment as Comment' 
+        )->get()->keyBy('userId');
+
+        $directory = public_path().'/hw/'.$id.'/'.$uid.'/';
+        if(is_dir($directory)){
+            $dir = scandir($directory);
+        }else{
+            $dir = [];
+        }
+        //$files = Storage::disk('public')->files($directory);
+        
 
         if($uid != "null"){
             $idt = DB::table('users')->where('uid',$uid)->select('name', 'uid', 'path')->first();
@@ -166,7 +181,10 @@ class HomeworkController extends Controller
             'title' => $this->hwName[$id%10]."批改",
             'id' => $id,
             'idt' => $idt,
-            'submits' => $keyed,
+            'submits' => $submits,
+            'HW' => $HW,
+            'dir' => $dir,
+            //'files' => $files,
             'users' => $users,
         ]);
     }
