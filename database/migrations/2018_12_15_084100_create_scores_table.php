@@ -18,7 +18,7 @@ class CreateScoresTable extends Migration
             $table->string('userId',15);
             $table->string('hwId',10);
             $table->smallInteger('hwScore');
-            $table->mediumText('hwComment');
+            $table->mediumText('hwComment')->nullable();
         });
     }
 
