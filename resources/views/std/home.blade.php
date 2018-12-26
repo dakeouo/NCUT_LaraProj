@@ -40,7 +40,7 @@
         @if($hw->id < count($choice)+1)
 		<td><b><font size="6">{{ $choice[$hw->id] }}</font></b>/10</td>
 	    @else
-		<td><a href="#" class="std-button-warning">作答</a></td>
+		<td><a href="choice/hwAns/{{ $hw->id }}" class="std-button-warning">作答</a></td>
 	   @endif
 		@if($hw->id < count($homework)+1)
 		<td>已上傳</td>

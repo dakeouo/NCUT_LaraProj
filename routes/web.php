@@ -32,6 +32,7 @@ Route::group(['prefix' => 'choice', 'middleware' => 'auth'], function() {
 	Route::get('edit/{id}', ['uses' => 'ChoiceController@edit']);
 	Route::patch('edit/{id}', ['as' => 'choice.edit', 'uses' => 'ChoiceController@update']);
 	Route::delete('delete/{id}', ['uses' => 'ChoiceController@destroy']);
+	Route::get('hwAns/{id}', ['uses' => 'ChoiceController@answer']);
 });
 
 Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
