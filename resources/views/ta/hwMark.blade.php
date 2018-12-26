@@ -13,7 +13,7 @@
 	</div>
 </div>
 @if (session('status'))
-    <div class="alert-success" role="alert">{{ session('status') }}</div>
+    <div class="alert-success" role="alert">{!! session('status') !!}</div>
 @endif
 <div class="mark-container"><table><tr><td style="vertical-align:text-top;">
 	<div class="mark-nav">
@@ -89,9 +89,14 @@
 			@if(Count($dir) > 0)
 				@foreach($dir as $file)
 				@if(($file != ".")&&($file != ".."))
-					<img src="{{ asset('img/file_icon.png') }}">
+					@if(is_dir(public_path().'/hw/'.$id.'/'.$idt->uid.'/'.$file))
+					<img src="{{ asset('img/folder_icon.png') }}" style="position: relative; top: 3px;">
+					{!! $file !!}<br />
+					@else
+					<img src="{{ asset('img/file_icon.png') }}" style="position: relative; top: 3px;">
 					<a href="/hw/{{ $id }}/{{ $idt->uid }}/{{ $file }}">
 					{!! $file !!}</a><br />
+					@endif
 				@endif
 				@endforeach
 			@else
@@ -103,15 +108,21 @@
 				{{ csrf_field() }}
 				<b>成績</b>
 				@if((count($HW) > 0)&&(isset($HW[$idt->uid])))
-				<input type="text" name="name" class="mark-form-input" value="{{ $HW[$idt->uid]->Score }}">
+				<input type="text" name="score" class="mark-form-input" value="{{ $HW[$idt->uid]->Score }}">
 				@else
-				<input type="text" name="name" class="mark-form-input" value="">
+				<input type="text" name="score" class="mark-form-input" value="">
 				@endif
 				<b>評語</b>
 				@if((count($HW) > 0)&&(isset($HW[$idt->uid])))
 				<input type="text" name="comment" class="mark-form-input" value="{{ $HW[$idt->uid]->Comment }}">
 				@else
 				<input type="text" name="comment" class="mark-form-input" value="">
+				@endif
+
+				@if(isset($HW[$idt->uid]))
+				<input type="hidden" name="mode" value="1">
+				@else
+				<input type="hidden" name="mode" value="0">
 				@endif
 				<br /><br />
 				<input type="submit" class="std-button-upload" value="送出成績">

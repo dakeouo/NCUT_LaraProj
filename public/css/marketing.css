@@ -50,11 +50,13 @@ label {
     border-radius: 10px;
 }
 .alert-success{
+    position: relative;
+    top: -10px;
     width: 100%;
-    padding: 0.5em 2em;
+    padding: 0.5em 1em;
     color: #009100;
     background-color:  #ceffce;
-    font-size: 0.7em;
+    font-size: 1em;
     border-radius: 10px;
 }
 
