@@ -89,6 +89,7 @@
 			@if(Count($dir) > 0)
 				@foreach($dir as $file)
 				@if(($file != ".")&&($file != ".."))
+					<img src="{{ asset('img/file_icon.png') }}">
 					<a href="/hw/{{ $id }}/{{ $idt->uid }}/{{ $file }}">
 					{!! $file !!}</a><br />
 				@endif

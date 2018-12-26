@@ -44,4 +44,5 @@ Route::group(['prefix' => 'homework', 'middleware' => 'auth'], function() {
 	Route::get('show/{id}', ['uses' => 'HomeworkController@show']);
 	Route::get('hwScore/{id}', ['uses' => 'HomeworkController@hwScore']);
 	Route::get('mark/{id}/{uid?}', ['uses' => 'HomeworkController@mark']);
+	Route::post('mark/{id}/{uid?}', ['as' => 'mark.post', 'uses' => 'HomeworkController@correct']);
 });
