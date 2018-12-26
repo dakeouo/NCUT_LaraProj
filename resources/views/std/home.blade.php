@@ -45,7 +45,7 @@
 		@if($hw->id < count($homework)+1)
 		<td>已上傳</td>
 	    @else
-		<td><a href="#" class="std-button-upload">上傳</a></td>
+		<td><a href="homework/hwPractice/{{ $hw->id }}" class="std-button-upload">上傳</a></td>
 	    @endif
 		@if($hw->id < count($create)+1)
 		@if($hw->id < count($update))

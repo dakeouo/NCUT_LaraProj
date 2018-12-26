@@ -148,6 +148,53 @@ class HomeworkController extends Controller
 			'hwc' => $comment,
         ]);
     }
+	public function practice($id){
+        $hw = DB::table('homeworks')->select('id','contect')->where('id',$id)->first();
+		$submit = DB::table('submits')->select(
+            'id', 'userId','hwId','practice',
+            'created_at','updated_at'
+        )->where('userId',Auth::user()->uid)->get();
+		 	
+        return view('std.hwPractice',[
+            'title' => $this->hwName[$id%10],
+            'backUrl' => url('homework'),
+            'hw' => $hw,
+			'submit'=> $submit,
+        ]);
+    }
+	public function upload(Request $request){
+
+        try{
+            $destinationPath = public_path().'/hw/';
+            $filetype = $request->stdFile->getMimeType();
+            /*
+            $filename = $request->stdFile->getclientoriginalname();
+            */
+
+            if($filetype == 'application/zip') $fType = ".zip";
+            else if($filetype == 'image/rar') $fType = ".rar";
+            else return "檔案格式錯誤";
+
+            //return $filetype;
+            $unique_name = Auth::user()->uid.$fType;
+            if($request->stdFile){
+                $request->file('stdFile')->move($destinationPath,$unique_name);
+                $request->stdFile = Auth::user()->uid.$fType;
+            }else{
+                $request->stdFile = Auth::user()->path;
+            }
+
+            DB::table('submits')->where('userId',Auth::user()->uid)->update([
+                'practice' => $request->stdFile, 
+                'created_at' => $request->creat,
+                'updated_at' => $request->update,
+            ]);
+
+            return redirect('/profile');
+        }catch (\Exception $e){
+            return "發生錯誤";
+        }
+    }
 
     public function mark($id,$uid="null"){
         $users = DB::table('users')->where('type','正式生')->select('name', 'uid', 'path')->Paginate(6);
@@ -155,7 +202,7 @@ class HomeworkController extends Controller
         $submits = DB::table('submits')->where('hwId',$id)
         ->select('userId', 'choice', 'practice', 'created_at', 'updated_at')->get()->keyBy('userId');
 
-        $HW = DB::table('scores')->where('hwId',$id%10)->select(
+        $HW = DB::table('scores')->where('hwId',$id)->select(
             'userId', 
             'hwScore as Score',
             'hwComment as Comment' 
@@ -187,31 +234,5 @@ class HomeworkController extends Controller
             //'files' => $files,
             'users' => $users,
         ]);
-    }
-
-    public function correct(Request $request, $id, $uid){
-        if($request->mode){
-            DB::table('scores')->where('userId', $uid)
-            ->Where('hwId', $id%10)->update([
-                'userId' => $uid, 
-                'hwId' => $id%10,
-                'hwScore' => $request->score,
-                'hwComment' => $request->comment,
-            ]);
-        }else{
-            DB::table('scores')->insert([
-                'userId' => $uid, 
-                'hwId' => $id%10,
-                'hwScore' => $request->score,
-                'hwComment' => $request->comment,
-            ]);
-        }
-
-        $request->session()->flash(
-            'status', 
-            '學號 <b>'.$uid.'</b> 於 <b>'.$this->hwName[$id%10].'</b> 的成績已更新!!'
-        );
-
-        return redirect('/homework/mark/'.$id.'/'.$uid.'/');
     }
 }
