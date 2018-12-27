@@ -40,12 +40,20 @@
         @if($hw->id < count($choice)+1)
 		<td><b><font size="6">{{ $choice[$hw->id] }}</font></b>/10</td>
 	    @else
+		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
 		<td><a href="choice/hwAns/{{ $hw->id }}" class="std-button-warning">作答</a></td>
+	    @else
+		<td><div class="std-button-disabled">作答</div></td>
+	    @endif
 	   @endif
 		@if($hw->id < count($homework)+1)
 		<td>已上傳</td>
 	    @else
+		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
 		<td><a href="homework/hwPractice/{{ $hw->id }}" class="std-button-upload">上傳</a></td>
+	    @else
+		<td><div class="std-button-disabled">上傳</div></td>
+        @endif	
 	    @endif
 		@if($hw->id < count($create)+1)
 		@if($hw->id < count($update))
@@ -63,10 +71,13 @@
 		@endif
 		<td>
 		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
-
 			<div class="std-button-disabled">觀看</div>
 		@else
+			@if($hw->id < count($create)+1)
 			<a href="homework/hwScore/{{ $hw->id }}" class="std-button-primary">觀看</a>
+		    @else
+			<div class="std-button-disabled">觀看</div>
+            @endif		
 		@endif
 		</td>
 	</tr>
