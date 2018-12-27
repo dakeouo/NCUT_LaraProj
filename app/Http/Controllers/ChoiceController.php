@@ -125,4 +125,25 @@ class ChoiceController extends Controller
          'count' => 0,
         ]);
     }
+	public function submit(Request $request, $id){
+		for($i=0;$i<10;$i++){
+        $studentAns = $ans[$i];
+		$questionAns = $QA[$i];
+		$point =0;
+		if($studentAns = $questionAns){
+			$point++;
+		 }
+		}
+		if($submits->choice == 0){
+        DB::table('submits')->where('userId',Auth::user()->uid)->insert([
+            'choice' => $request->point, 
+        ]);
+		}else{
+		DB::table('submits')->where('userId',Auth::user()->uid)->update([
+            'choice' => $request->point, 
+        ]);	
+		}
+
+        return redirect('/choice');
+    }
 }

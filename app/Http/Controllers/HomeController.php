@@ -53,7 +53,7 @@ class HomeController extends Controller
 			$subchoice = DB::table('submits')->where('userId',Auth::user()->uid)->select(
                     'hwId as hw',
 					'choice as Choice'
-                )->pluck( 'Choice','hw'); 
+                )->pluck( 'Choice','hw');
             return view('std.home',[
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,
