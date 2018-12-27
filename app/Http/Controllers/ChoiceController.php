@@ -121,7 +121,8 @@ class ChoiceController extends Controller
         return view('std.hwAns',[
          'title' => $this->hwName[$id%10],
          'hw' => $hw,  
-         'choices' => $choices,	 
+         'choices' => $choices,
+         'count' => 0,
         ]);
     }
 }

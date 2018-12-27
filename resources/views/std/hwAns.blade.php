@@ -17,15 +17,23 @@
 @endif
 @if (count($choices) > 0)
 	@foreach($choices as $ch)
-	<tr>
-		<td style="text-align: left;">{{ $ch->question }}</br></td>
-		<font color="blue"><input type="radio" class="pure-input-1" placeholder="選項 (A)" name="optionA"  required>{{ $ch->option1 }}</br></font>
-        <font color="blue"><input type="radio" class="pure-input-1" placeholder="選項 (B)" name="optionB"  required>{{ $ch->option2 }}</br></font>
-        <font color="blue"><input type="radio" class="pure-input-1" placeholder="選項 (C)" name="optionC"  required>{{ $ch->option3 }}</br></font>
-        <font color="blue"><input type="radio" class="pure-input-1" placeholder="選項 (D)" name="optionD"  required>{{ $ch->option4 }}</br></font>
-	</tr>
+	<form class="pure-form" method="POST" action="">
+		<div class="pure-control-group pure-u-1">
+			<div class="std_choice_head">
+				{{ ++$count }}. {{ $ch->question }}
+			</div>
+			<label for="option-three" class="pure-radio">
+				<input type="radio" name="ans[{{ $count-1 }}]" value="1" required>{{ $ch->option1 }}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="2" required>{{ $ch->option2 }}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="3" required>{{ $ch->option3 }}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="4" required>{{ $ch->option4 }}<br />
+			</label>
+		</div>
+	</form>
 	@endforeach
+	<input type="submit" class="std-button-upload" value="送出作答">
+@else
+	<p align="center" style="font-size:28px;">此作業無選擇題作答</p>
 @endif
-    <input type="submit" class="std-button-upload" value="送出作答">
-
+    
 @endsection
