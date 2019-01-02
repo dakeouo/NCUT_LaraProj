@@ -37,7 +37,7 @@
 		<td>{{ $hw->weight }}%</td>
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
-        @if($hw->id < count($choice)+1)
+        @if($hw->id < count($choice))
 		<td><b><font size="6">{{ $choice[$hw->id] }}</font></b>/10</td>
 	    @else
 		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
@@ -46,7 +46,7 @@
 		<td><div class="std-button-disabled">作答</div></td>
 	    @endif
 	   @endif
-		@if($hw->id < count($homework)+1)
+		@if($hw->id < count($homework))
 		<td>已上傳</td>
 	    @else
 		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
@@ -55,7 +55,7 @@
 		<td><div class="std-button-disabled">上傳</div></td>
         @endif	
 	    @endif
-		@if($hw->id < count($create)+1)
+		@if($hw->id < count($create))
 		@if($hw->id < count($update))
 		<td>{{ $create[$hw->id] }}</td>
 	    @else
@@ -64,7 +64,7 @@
 	    @else
 		<td>尚未繳交</td>
 	    @endif
-		@if($hw->id < count($scores)+1)
+		@if($hw->id < count($scores))
 		<td>{{ $scores[$hw->id] }}</td>
 		@else
 		<td>0</td>
@@ -73,7 +73,7 @@
 		@if((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
 			<div class="std-button-disabled">觀看</div>
 		@else
-			@if($hw->id < count($create)+1)
+			@if($hw->id < count($create))
 			<a href="homework/hwScore/{{ $hw->id }}" class="std-button-primary">觀看</a>
 		    @else
 			<div class="std-button-disabled">觀看</div>

@@ -126,24 +126,49 @@ class ChoiceController extends Controller
         ]);
     }
 	public function submit(Request $request, $id){
-		for($i=0;$i<10;$i++){
-        $studentAns = $ans[$i];
-		$questionAns = $QA[$i];
+		$submits = DB::table('submits')->select('id')->where('userId',Auth::user()->uid)->where('hwId',$id)->first();
+		
 		$point =0;
-		if($studentAns = $questionAns){
+		
+		for($i=0;$i<10;$i++){
+        $studentAns = $request->ans[$i];
+		$questionAns = $request->QA[$i];
+		
+		if($studentAns == $questionAns){
 			$point++;
 		 }
 		}
-		if($submits->choice == 0){
-        DB::table('submits')->where('userId',Auth::user()->uid)->insert([
-            'choice' => $request->point, 
+		
+		date_default_timezone_set("Asia/Shanghai");
+		$date = date("Y-m-d h:i:s");
+		
+		if($submits){
+        DB::table('submits')->where('userId',Auth::user()->uid)->where('hwId',$id)->update([
+            'updated_at' => $date,
+            'choice' => $point, 
         ]);
 		}else{
-		DB::table('submits')->where('userId',Auth::user()->uid)->update([
-            'choice' => $request->point, 
+		DB::table('submits')->where('userId',Auth::user()->uid)->where('hwId',$id)->insert([
+		    'userId' => Auth::user()->uid,
+			'hwId' =>$id,
+			'created_at' => $date,
+			'updated_at' => $date,
+            'choice' => $point, 
         ]);	
 		}
 
-        return redirect('/choice');
+		$request->session()->flash(
+            'status', 
+            "選擇題的得分為{$point}分!!"
+        );
+		/*
+        return view('std.hwAnsform',[
+		'score' => $point,
+		'submits' => $submits,
+		]);
+		*/
+		
+		return redirect('/home');
+		
     }
 }

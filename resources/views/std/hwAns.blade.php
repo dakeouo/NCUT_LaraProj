@@ -18,6 +18,7 @@
 @if (count($choices) > 0)
 	@foreach($choices as $ch)
 	<form class="pure-form" method="POST" action="">
+	{{ csrf_field() }}
 		<div class="pure-control-group pure-u-1">
 			<div class="std_choice_head">
 				{{ ++$count }}. {{ $ch->question }}
