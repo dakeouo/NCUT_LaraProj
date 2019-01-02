@@ -235,4 +235,28 @@ class HomeworkController extends Controller
             'users' => $users,
         ]);
     }
+
+    public function correct(Request $request, $id, $uid){
+        if($request->mode){
+            DB::table('scores')->where('userId', $uid)
+            ->Where('hwId', $id%10)->update([
+                'userId' => $uid, 
+                'hwId' => $id%10,
+                'hwScore' => $request->score,
+                'hwComment' => $request->comment,
+            ]);
+        }else{
+            DB::table('scores')->insert([
+                'userId' => $uid, 
+                'hwId' => $id%10,
+                'hwScore' => $request->score,
+                'hwComment' => $request->comment,
+            ]);
+        }
+        $request->session()->flash(
+            'status', 
+            '學號 <b>'.$uid.'</b> 於 <b>'.$this->hwName[$id%10].'</b> 的成績已更新!!'
+        );
+        return redirect('/homework/mark/'.$id.'/'.$uid.'/');
+    }
 }
