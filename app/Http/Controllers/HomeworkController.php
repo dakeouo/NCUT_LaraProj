@@ -165,7 +165,7 @@ class HomeworkController extends Controller
 	public function upload(Request $request){
 
         try{
-            $destinationPath = public_path().'/hw/';
+            $destinationPath = public_path().'/hw/'.$id.'/'.$uid.'/';
             $filetype = $request->stdFile->getMimeType();
             /*
             $filename = $request->stdFile->getclientoriginalname();
