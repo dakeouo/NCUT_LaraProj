@@ -18,14 +18,11 @@
 <div class="profile-edit">
 	<table>
 		<tr><td width="200">
-			<div class="table_img img_200" align="center">
-				<img src="{{ asset('img/std/'.Auth::user()->path) }}">
-			</div>
 		</td></tr>
 		<tr><td>
 		<div class="profile-info" style="width: 540px; text-align: left;">
 		<label class="std-id">
-			<form class="pure-form pure-form-aligned" method="POST" action="{{ route('profile.edit') }}" enctype="multipart/form-data">{{ csrf_field() }}
+			<form class="pure-form pure-form-aligned" method="POST" action="{{ $action }}" enctype="multipart/form-data">{{ csrf_field() }}
 				<b>作業上傳：</b><input type="file" name="stdFile" accept=".zip,.rar" style="position: relative; top: 7px; width: 350px;" value="{{ Auth::user()->path }}"><br />
 				<b>姓名：{{ Auth::user()->name }}<br />
 				<b>學號：{{ Auth::user()->uid }}<br />

@@ -38,7 +38,7 @@
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
 		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
 		
-        @if(isset($choice[$hw->id]))
+        @if(isset($choice[$hw->id])&&(!is_null($choice[$hw->id])))
 		<td><b><font size="6">{{ $choice[$hw->id]}}</font></b>/10</td>
 	    @elseif((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
 		<td><a href="choice/hwAns/{{ $hw->id }}" class="std-button-warning">作答</a></td>

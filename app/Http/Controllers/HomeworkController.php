@@ -153,45 +153,65 @@ class HomeworkController extends Controller
 		$submit = DB::table('submits')->select(
             'id', 'userId','hwId','practice',
             'created_at','updated_at'
-        )->where('userId',Auth::user()->uid)->get();
+        )->where('userId',Auth::user()->uid)->where('hwId',$id)->get();
 		 	
         return view('std.hwPractice',[
             'title' => $this->hwName[$id%10],
             'backUrl' => url('homework'),
+			'action' => $id,
             'hw' => $hw,
 			'submit'=> $submit,
         ]);
     }
-	public function upload(Request $request){
+	public function upload(Request $request, $id){
+		
+		$submits = DB::table('submits')->select('id')->where('userId',Auth::user()->uid)->where('hwId',$id)->first();
 
         try{
-            $destinationPath = public_path().'/hw/'.$id.'/'.$uid.'/';
+            $destinationPath = public_path().'/hw/'.$id.'/'.Auth::user()->uid.'/';
             $filetype = $request->stdFile->getMimeType();
             /*
             $filename = $request->stdFile->getclientoriginalname();
             */
 
-            if($filetype == 'application/zip') $fType = ".zip";
-            else if($filetype == 'image/rar') $fType = ".rar";
+            if($filetype == 'application/x-rar') $fType = ".rar";
+            else if($filetype == 'application/octet-stream') $fType = ".zip";
             else return "檔案格式錯誤";
 
             //return $filetype;
             $unique_name = Auth::user()->uid.$fType;
             if($request->stdFile){
                 $request->file('stdFile')->move($destinationPath,$unique_name);
-                $request->stdFile = Auth::user()->uid.$fType;
+                $request->stdFile = 1;
             }else{
-                $request->stdFile = Auth::user()->path;
+                $request->stdFile = 1;
             }
-
-            DB::table('submits')->where('userId',Auth::user()->uid)->update([
-                'practice' => $request->stdFile, 
-                'created_at' => $request->creat,
-                'updated_at' => $request->update,
+			
+			date_default_timezone_set("Asia/Shanghai");
+		    $date = date("Y-m-d h:i:s");
+			if($submits){
+            DB::table('submits')->where('userId',Auth::user()->uid)->where('hwId',$id)->update([
+            'updated_at' => $date,
+            'practice' => '1', 
             ]);
-
-            return redirect('/profile');
-        }catch (\Exception $e){
+		    }else{
+		    DB::table('submits')->where('userId',Auth::user()->uid)->where('hwId',$id)->insert([
+		    'userId' => Auth::user()->uid,
+			'hwId' =>$id,
+			'created_at' => $date,
+			'updated_at' => $date,
+            'practice' => '1', 
+            ]);	
+		    }
+            
+			$request->session()->flash(
+            'status', 
+            "作業上傳成功!!"
+             );
+			 
+            return redirect('/home');
+			
+        }catch (Exception $e){
             return "發生錯誤";
         }
     }
