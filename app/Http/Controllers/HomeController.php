@@ -58,10 +58,10 @@ class HomeController extends Controller
 			    'homeworks' => $homeworks,
                 'HWname' => $HWname,
 				'scores' => $score,
-				'homework' => $submit,
 				'create' => $subtime,
 				'update' => $subupdate,
 				'choice' => $subchoice,
+				'submit' =>$submit,
 			]);
         }else{
             $users = DB::table('users')->where('type','正式生')->select('name', 'uid')->get();

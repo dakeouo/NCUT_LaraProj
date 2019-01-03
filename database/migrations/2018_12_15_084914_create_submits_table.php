@@ -17,8 +17,8 @@ class CreateSubmitsTable extends Migration
             $table->increments('id');
             $table->string('userId',15);
             $table->string('hwId',10);
-            $table->smallInteger('choice');
-            $table->boolean('practice');
+            $table->smallInteger('choice')->nullable();
+            $table->boolean('practice')->default("0");
             $table->timestamps();
         });
     }
