@@ -149,11 +149,11 @@ class HomeworkController extends Controller
         ]);
     }
 	public function practice($id){
-        $hw = DB::table('homeworks')->select('id','contect')->where('id',$id)->first();
-		$submit = DB::table('submits')->select(
-            'id', 'userId','hwId','practice',
-            'created_at','updated_at'
-        )->where('userId',Auth::user()->uid)->where('hwId',$id)->get();
+        $hw = DB::table('homeworks')->select('id','contect','start_at','finish_at')->where('id',$id)->first();
+		$submit = DB::table('submits')->where('userId',Auth::user()->uid)->select(
+                    'hwId as hw',
+                    'practice as Practice'
+                )->pluck('Practice', 'hw');
 		 	
         return view('std.hwPractice',[
             'title' => $this->hwName[$id%10],
