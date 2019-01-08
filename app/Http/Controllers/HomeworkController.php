@@ -173,11 +173,11 @@ class HomeworkController extends Controller
             /*
             $filename = $request->stdFile->getclientoriginalname();
             */
-
+            
             if($filetype == 'application/x-rar') $fType = ".rar";
-            else if($filetype == 'application/octet-stream') $fType = ".zip";
+            else if($filetype == 'application/zip') $fType = ".zip";
             else return "檔案格式錯誤";
-
+            
             //return $filetype;
             $unique_name = Auth::user()->uid.$fType;
             if($request->stdFile){
