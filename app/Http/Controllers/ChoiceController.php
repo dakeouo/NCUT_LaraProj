@@ -129,8 +129,8 @@ class ChoiceController extends Controller
 		$submits = DB::table('submits')->select('id')->where('userId',Auth::user()->uid)->where('hwId',$id)->first();
 		
 		$point =0;
-		
-		for($i=0;$i<count($request->QA[$i]);$i++){
+
+		for($i=0;$i<count($request->QA);$i++){
         $studentAns = $request->ans[$i];
 		$questionAns = $request->QA[$i];
 		

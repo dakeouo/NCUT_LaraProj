@@ -24,10 +24,10 @@
 				{{ ++$count }}. {{ $ch->question }}
 			</div>
 			<label for="option-three" class="pure-radio">
-				<input type="radio" name="ans[{{ $count-1 }}]" value="1" required>{{ $ch->option1 }}<br />
-				<input type="radio" name="ans[{{ $count-1 }}]" value="2" required>{{ $ch->option2 }}<br />
-				<input type="radio" name="ans[{{ $count-1 }}]" value="3" required>{{ $ch->option3 }}<br />
-				<input type="radio" name="ans[{{ $count-1 }}]" value="4" required>{{ $ch->option4 }}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="1" required>{!! $ch->option1 !!}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="2" required>{!! $ch->option2 !!}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="3" required>{!! $ch->option3 !!}<br />
+				<input type="radio" name="ans[{{ $count-1 }}]" value="4" required>{!! $ch->option4 !!}<br />
 			</label>
 		</div>
 		<input type="hidden" name="QA[{{ $count-1 }}]" value="{{ $ch->ans }}">
