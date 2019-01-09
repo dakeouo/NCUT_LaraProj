@@ -98,10 +98,9 @@ class HomeController extends Controller
 
         try{
             $destinationPath = public_path().'/img/std/';
-            $filetype = $request->stdFile->getMimeType();
-            /*
-            $filename = $request->stdFile->getclientoriginalname();
-            */
+            if($request->stdFile) $filetype = $request->stdFile->getMimeType();
+            else $filetype = 'image/png';
+            
             if($filetype == 'application/jpeg') $fType = ".jpg";
             else if($filetype == 'image/jpeg') $fType = ".jpeg";
             else if($filetype == 'image/png') $fType = ".png";

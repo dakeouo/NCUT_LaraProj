@@ -130,7 +130,7 @@ class ChoiceController extends Controller
 		
 		$point =0;
 		
-		for($i=0;$i<10;$i++){
+		for($i=0;$i<count($request->QA[$i]);$i++){
         $studentAns = $request->ans[$i];
 		$questionAns = $request->QA[$i];
 		
