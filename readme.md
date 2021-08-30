@@ -44,10 +44,10 @@ $ php artisan migrate
 
 ## Default User
 #### 學生端
-> 帳號:3A432100@ncut.edu.tw 密碼:123456
+> 帳號:s3A432100@ncut.edu.tw 密碼:123456
 
 #### TA端
-> 帳號:3A123400@ncut.edu.tw 密碼:654321
+> 帳號:s3A123400@ncut.edu.tw 密碼:654321
 
 ### Designer
 - [Liang Jyun Hong](https://github.com/3A417012)

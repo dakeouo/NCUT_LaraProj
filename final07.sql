@@ -7,7 +7,7 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-INSERT INTO `choices` (`id`, `chapter`, `topic`, `ans`, `question`, `option1`, `option2`, `option3`, `option4`) VALUES
+INSERT INTO `lara2019_choices` (`id`, `chapter`, `topic`, `ans`, `question`, `option1`, `option2`, `option3`, `option4`) VALUES
 (1,	1,	1,	3,	'下列何者是構成網頁的基本要素?',	'PHP1',	'JSP2',	'HTML3',	'ASP4'),
 (2,	1,	1,	4,	'網頁是由許多標籤所組成，一個簡單的網頁包含以下那些標籤?',	'&lt;HTML&gt;',	'&lt;META&gt;',	'&lt;BODY&gt;',	'以上皆是'),
 (3,	1,	1,	4,	'下列何者是宣告網頁的開始與結束?',	'&lt;HEAD&gt;&lt;/HEAD&gt;',	'&lt;BODY&gt;&lt;/BODY&gt;',	'&lt;FORM&gt;&lt;/FORM&gt;',	'&lt;HTML&gt;&lt;/HTML&gt;'),
@@ -59,14 +59,14 @@ INSERT INTO `choices` (`id`, `chapter`, `topic`, `ans`, `question`, `option1`, `
 (49,	5,	1,	1,	'有關於查詢 SQL 語法，下列何者正確?',	'格式為「select 查詢內容 from 資料表名稱」',	'格式為「select 資料表名稱 from 查詢內容」',	'格式為「select from 查詢內容」',	'格式為「select from 資料庫名稱」'),
 (50,	5,	1,	3,	'有關於附加篩選條件，以下何者正確?',	'附加篩選條件只能用在查詢',	'where 附加篩選條件，只能用於新增',	'order by 附加篩選條件可用來做排序動作',	' between A and B 附加篩選條件必須符合 A 到 B 之外，才顯示資料');
 
-INSERT INTO `homeworks` (`type`, `id`, `contect`, `weight`, `start_at`, `finish_at`) VALUES
+INSERT INTO `lara2019_homeworks` (`type`, `id`, `contect`, `weight`, `start_at`, `finish_at`) VALUES
 ('0',	1,	'<div>繳交時間：10/2(四)10:00 – 10/10(二)17:00</div><ul><li>選擇題答案請打在WORD檔裡</li><li>網頁請用資料夾包起來</li><li>製作自我介紹的頁面(至少兩頁)</li></ul><div>完成後以自己的學號為檔名打包上傳</div>',	100,	'2018-10-02 13:00:00',	'2018-10-10 22:00:00'),
 ('0',	2,	'無說明',	100,	'2018-10-18 08:00:00',	'2019-01-31 22:00:00'),
 ('0',	3,	'<div>繳交時間：10/25(四)10:00 – 11/6(二)17:00</div><ul><li>選擇題採線上填答(不用再上傳選擇題)</li><li>網頁請用資料夾包起來</li><li>99乘法表檔案請命名為9x9.php</li></ul><div>完成後以自己的學號為檔名打包上傳</div>',	100,	'2018-10-25 10:00:00',	'2019-02-28 17:00:00'),
 ('0',	4,	'<div><b>繳交時間：</b>12/4 (二)13:30–12/12(三)22:00</div><div><b>選擇題</b>採線上填答(不用上傳選擇題)</div><div><b>網頁</b>請用資料夾包起來</div><div><b>會員系統</b>請務必要有以下的帳號(這樣比較好打分數，不管你裡面有幾個帳號)：</div><div><ul><li><b>帳號：</b>Andy</li><li><b>密碼：</b>1234</li></ul></div><div>完成後以自己的學號為檔名打包上傳</div><div><br></div>',	100,	'2018-12-25 12:00:00',	'2019-03-11 13:00:00'),
 ('1',	11,	'補交測試',	100,	'2018-12-04 12:30:00',	'2018-12-07 12:30:00');
 
-INSERT INTO `scores` (`id`, `userId`, `hwId`, `hwScore`, `hwComment`) VALUES
+INSERT INTO `lara2019_scores` (`id`, `userId`, `hwId`, `hwScore`, `hwComment`) VALUES
 (1,	'3A517044',	'1',	90,	NULL),
 (2,	'3A617001',	'1',	0,	NULL),
 (3,	'3A617003',	'1',	0,	NULL),
@@ -78,20 +78,20 @@ INSERT INTO `scores` (`id`, `userId`, `hwId`, `hwScore`, `hwComment`) VALUES
 (9,	'3A617010',	'1',	0,	NULL),
 (10,	'3A432100',	'1',	0,	NULL);
 
-INSERT INTO `submits` (`id`, `userId`, `hwId`, `choice`, `practice`, `created_at`, `updated_at`) VALUES
+INSERT INTO `lara2019_submits` (`id`, `userId`, `hwId`, `choice`, `practice`, `created_at`, `updated_at`) VALUES
 (1,	'3A432100',	'2',	9,	1,	'2019-01-08 18:44:45',	'2019-01-08 18:47:27');
 
-INSERT INTO `users` (`id`, `uid`, `type`, `path`, `name`, `password`, `email`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1,	'3A517044',	'正式生',	'null.png',	'張建鴻',	'$2y$10$r9JoQbjj4rz53pSI2LpDeeZAPuomKsirp4VGQRUH9YPfhrIGfT17W',	's3A517044@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:06'),
-(2,	'3A617001',	'正式生',	'3A617001.jpg',	'劉宗鑫',	'$2y$10$bQdJv6E/bAQvX3tWm.NomO7CoLgto65rq6E7bgv4Fmy/FlVUExPxy',	's3A617001@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:20'),
-(3,	'3A617003',	'正式生',	'3A617003.jpg',	'馬嘉駿',	'$2y$10$Zd/BVngqaB0jiafrA3Sc.OxWM.7/cEab9K7X4WXi5voF.af6vBp3a',	's3A617003@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:25'),
-(4,	'3A617004',	'正式生',	'3A617004.jpg',	'簡英洲',	'$2y$10$ozb2VF2MuEOOHarVePZ6O.gcOX7nG6HJiEZT2/kZlnAz4BfxZxzMu',	's3A617004@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:42'),
-(5,	'3A617006',	'正式生',	'3A617006.jpg',	'林韋丞',	'$2y$10$8wlytHfkk4T4UQRH37qiX.bXuLL2fMfBvCx3QCAXBfeJ4z38gNlTu',	's3A617006@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:57'),
-(6,	'3A617007',	'正式生',	'null.png',	'陳榮澤',	'$2y$10$ARMTJHjSj0oIYtrgjLgl2.EvKx10tWZHNIU6bdgOti18HUdYOJ7pW',	's3A617007@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:32:23'),
-(7,	'3A617008',	'正式生',	'null.png',	'李伊謦',	'$2y$10$t9Q00SxCmPbesowvB.XAY.648wt3hxHTzCdhet1DOPDVv1zI9FSo6',	's3A617008@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:32:44'),
-(8,	'3A617009',	'正式生',	'3A617009.jpg',	'廖唯言',	'$2y$10$/lRGE/PXmoACSRoJPhAWz.xQhJ3I0.Nseo9WrgqnLzvJE9px.uQyW',	's3A617009@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:33:00'),
-(9,	'3A617010',	'正式生',	'3A617010.jpg',	'劉東祐',	'$2y$10$Pxnf6ZS1R7PRjTn7Edj1TOTsbtbjvdd/uz2cFyacr1HGwf9OeQqHS',	's3A617010@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:33:19'),
-(10,	'3A432100',	'正式生',	'null.png',	'測試者',	'$2y$10$8eq2Ktbl/gy7w/OopgXFPONx7S.NFJOZlKWcsAS36h0Img4PrgYhG',	's3A432100@ncut.edu.tw',	NULL,	'umMkpv7cEoqxKkOh6nanOCncWgwYuhmwsxpuO6DoGTQdk8eltEege86ClWXb',	'2019-01-08 22:03:38',	'2019-01-09 06:49:36'),
-(11,	'3A123400',	'助教',	'null.png',	'管理者',	'$2y$10$b9FiQiX31N19fIK0BHz.juTkSQhHYbQnaz53i3JWpRuNxUiHXsQya',	's3A123400@ncut.edu.tw',	NULL,	'34DtemQ7SuKRY220CwBudQoZpzWyh5FYXXKzFew44xXcKZnlDZHKIRjakxee',	'2019-01-08 22:05:05',	'2019-01-09 06:34:59');
+INSERT INTO `lara2019_users` (`id`, `uid`, `type`, `path`, `name`, `password`, `email`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1,	'3A517044',	'正式生',	'null.png',	'學生姓名',	'$2y$10$r9JoQbjj4rz53pSI2LpDeeZAPuomKsirp4VGQRUH9YPfhrIGfT17W',	's3A517044@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:06'),
+(2,	'3A617001',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$bQdJv6E/bAQvX3tWm.NomO7CoLgto65rq6E7bgv4Fmy/FlVUExPxy',	's3A617001@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:20'),
+(3,	'3A617003',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$Zd/BVngqaB0jiafrA3Sc.OxWM.7/cEab9K7X4WXi5voF.af6vBp3a',	's3A617003@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:25'),
+(4,	'3A617004',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$ozb2VF2MuEOOHarVePZ6O.gcOX7nG6HJiEZT2/kZlnAz4BfxZxzMu',	's3A617004@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:42'),
+(5,	'3A617006',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$8wlytHfkk4T4UQRH37qiX.bXuLL2fMfBvCx3QCAXBfeJ4z38gNlTu',	's3A617006@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:31:57'),
+(6,	'3A617007',	'正式生',	'null.png',	'學生姓名',	'$2y$10$ARMTJHjSj0oIYtrgjLgl2.EvKx10tWZHNIU6bdgOti18HUdYOJ7pW',	's3A617007@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:32:23'),
+(7,	'3A617008',	'正式生',	'null.png',	'學生姓名',	'$2y$10$t9Q00SxCmPbesowvB.XAY.648wt3hxHTzCdhet1DOPDVv1zI9FSo6',	's3A617008@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:32:44'),
+(8,	'3A617009',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$/lRGE/PXmoACSRoJPhAWz.xQhJ3I0.Nseo9WrgqnLzvJE9px.uQyW',	's3A617009@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:33:00'),
+(9,	'3A617010',	'正式生',	'null.jpg',	'學生姓名',	'$2y$10$Pxnf6ZS1R7PRjTn7Edj1TOTsbtbjvdd/uz2cFyacr1HGwf9OeQqHS',	's3A617010@student.ncut.edu.tw',	NULL,	NULL,	'2018-12-17 06:36:15',	'2019-01-09 06:33:19'),
+(10,	'3A432100',	'正式生',	'null.png',	'測試者',	'$2y$10$8eq2Ktbl/gy7w/OopgXFPONx7S.NFJOZlKWcsAS36h0Img4PrgYhG',	's3A432100@ncut.edu.tw',	NULL,	NULL,	'2019-01-08 22:03:38',	'2019-01-09 06:49:36'),
+(11,	'3A123400',	'助教',	'null.png',	'管理者',	'$2y$10$b9FiQiX31N19fIK0BHz.juTkSQhHYbQnaz53i3JWpRuNxUiHXsQya',	's3A123400@ncut.edu.tw',	NULL,	NULL,	'2019-01-08 22:05:05',	'2019-01-09 06:34:59');
 
 -- 2019-01-09 07:14:31
