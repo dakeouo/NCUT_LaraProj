@@ -31,7 +31,7 @@
 				<td style="position: relative; top: -5px; left: 10px;">
 					<font style="font-size: 10px;">正式生</font><br />
 					<font style="position: relative; top: -5px; font-size: 18px; font-weight: 500;">
-						<a href="/homework/mark/{{ $id }}/{{ $user->uid }}">{{ $user->uid }}&nbsp;{{ $user->name }}</a>
+						<a href="{{ url('homework/mark') }}/{{ $id }}/{{ $user->uid }}">{{ $user->uid }}&nbsp;{{ $user->name }}</a>
 					</font>
 				</td>
 			</tr></table>

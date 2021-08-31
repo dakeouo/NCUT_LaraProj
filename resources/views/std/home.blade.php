@@ -36,19 +36,19 @@
 		<td>{{ $HWname[$hw->id] }}</td>
 		<td>{{ $hw->weight }}%</td>
 		<td>從{{ $hw->start_at }}<br />至{{ $hw->finish_at }}</td>
-		<td><a href="homework/show/{{ $hw->id }}" class="std-button-primary">說明</a></td>
+		<td><a href="{{ $hw->id }}" class="std-button-primary">說明</a></td>
 		
         @if(isset($choice[$hw->id])&&(!is_null($choice[$hw->id])))
 		<td><b><font size="6">{{ $choice[$hw->id]}}</font></b>/10</td>
 	    @elseif((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
-		<td><a href="choice/hwAns/{{ $hw->id }}" class="std-button-warning">作答</a></td>
+		<td><a href="{{ url('choice/hwAns') }}/{{ $hw->id }}" class="std-button-warning">作答</a></td>
 	    @else
 		<td><div class="std-button-disabled">作答</div></td>
 	    @endif
 		@if(isset($submit[$hw->id])&&($submit[$hw->id] == 1))
 		<td>已上傳</td>
 	    @elseif((strtotime("now") > strtotime($hw->start_at))&&(strtotime("now") < strtotime($hw->finish_at)))
-		<td><a href="homework/hwPractice/{{ $hw->id }}" class="std-button-upload">上傳</a></td>
+		<td><a href="{{ url('homework/hwPractice') }}/{{ $hw->id }}" class="std-button-upload">上傳</a></td>
 	    @else
 		<td><div class="std-button-disabled">上傳</div></td>
 	    @endif
@@ -66,7 +66,7 @@
 		@endif
 		<td>
 		@if(isset($scores[$hw->id]))
-		<a href="homework/hwScore/{{ $hw->id }}" class="std-button-primary">觀看</a>
+		<a href="{{ url('homework/hwScore') }}/{{ $hw->id }}" class="std-button-primary">觀看</a>
 	    @else
 		<div class="std-button-disabled">觀看</div>		
 		@endif
