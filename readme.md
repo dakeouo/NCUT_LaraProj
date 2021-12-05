@@ -44,6 +44,30 @@ $ php artisan migrate
 2. 新增資料庫
 3. 將 final07.sql 匯入至該資料庫
 
+## 資料庫
+![image](https://i.imgur.com/vbkSwh9.png)
+在Laravel建立時，預設會建立三個資料表：(以灰色底表示)
+- migrations：遷移資料表用。內部記載需使用**database/migrations/**底下的那個PHP檔，來建立你的資料表
+- password_reset：使用者重置密碼用
+- users：使用者資料。預設會有以下欄位：
+  - id：使用編號，自動遞增
+  - name：使用者姓名
+  - email：電子信箱，唯一
+  - email_verified_at：電子信箱驗證時間，時戳，可為空值(NULL)
+  - password：密碼
+  - remember_token："記得我"的token，有勾就有token
+  - created_at/updated_at：紀錄建立與更新時間
+
+而與本專案有相關的共有5個資料表：
+- users：使用者資料。除了上述預設的欄位，還新增了：
+  - uid：學生/助教學號，唯一。為本專案採用的"userID"
+  - type：使用者類型(正式生/助教)，預設為"正式生"
+  - path：使用者圖片檔案路徑，預設為"null.png"
+- homework：作業資訊資料。包含作業類型(type, 正式/補交)、作業ID(id)、說明內容(contect)等
+- scores：紀錄作業評分結果。包含作業ID(hwId)、分數(hwScore)、評語(hwComment)等
+- choices：選擇題資料。包含作業ID(hwId)、四個選項(option1-4)、選擇題答案(ans)等
+- submits：學生作答狀況。包含使用者ID(userId)、作業ID(hwId)等
+
 ## Default User
 #### 學生端
 > 帳號:s3A432100@ncut.edu.tw 密碼:123456
