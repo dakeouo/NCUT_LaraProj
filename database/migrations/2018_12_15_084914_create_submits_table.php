@@ -21,6 +21,10 @@ class CreateSubmitsTable extends Migration
             $table->boolean('practice')->default("0");
             $table->timestamps();
         });
+
+        DB::table('submits')->insert([
+            ['userId'=>'3A432100', 'hwId'=>'2', 'choice'=>9, 'practice'=>1],
+        ]);
     }
 
     /**

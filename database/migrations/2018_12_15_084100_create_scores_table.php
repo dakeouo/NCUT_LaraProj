@@ -20,6 +20,15 @@ class CreateScoresTable extends Migration
             $table->smallInteger('hwScore');
             $table->mediumText('hwComment')->nullable();
         });
+
+        DB::table('scores')->insert([
+            ['userId'=>'3A617006', 'hwId'=>'1', 'hwScore'=>90, 'hwComment'=>NULL],
+            ['userId'=>'3A617007', 'hwId'=>'1', 'hwScore'=>87, 'hwComment'=>NULL],
+            ['userId'=>'3A617008', 'hwId'=>'1', 'hwScore'=>69, 'hwComment'=>NULL],
+            ['userId'=>'3A617009', 'hwId'=>'1', 'hwScore'=>78, 'hwComment'=>NULL],
+            ['userId'=>'3A617010', 'hwId'=>'1', 'hwScore'=>92, 'hwComment'=>NULL],
+            ['userId'=>'3A432100', 'hwId'=>'1', 'hwScore'=>85, 'hwComment'=>NULL],
+        ]);
     }
 
     /**
