@@ -8,7 +8,7 @@
 @if (session('status'))
     <div class="alert-success" role="alert">{{ session('status') }}</div>
 @endif
-<form class="pure-form" method="POST" action="{{ route('password.email') }}">
+<form class="pure-form" method="POST" action="{{ secure_route('password.email') }}">
     @csrf
     <fieldset>
        <div class="pure-control-group">

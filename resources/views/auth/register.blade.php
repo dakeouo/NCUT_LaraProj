@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="content-head">@yield('title')</div>
-<form class="pure-form" method="POST" action="{{ route('register') }}">
+<form class="pure-form" method="POST" action="{{ secure_route('register') }}">
      @csrf
     <fieldset>
         <div class="pure-control-group">

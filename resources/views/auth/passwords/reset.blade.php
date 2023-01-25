@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="content-head">@yield('title')</div>
-<form class="pure-form" method="POST" action="{{ route('password.update') }}">
+<form class="pure-form" method="POST" action="{{ secure_route('password.update') }}">
     @csrf
     <fieldset>
         <input type="hidden" name="token" value="{{ $token }}">
