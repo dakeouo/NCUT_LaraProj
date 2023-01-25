@@ -22,5 +22,5 @@
         <![endif]-->
         <!--[if gt IE 8]><!-->
             <!-- <link rel="stylesheet" href="css/marketing.css"> -->
-            <link href="{{ url('css/marketing.css') }}" rel="stylesheet">
+            <link href="{{ secure_asset('css/marketing.css') }}" rel="stylesheet">
         <!--<![endif]-->
